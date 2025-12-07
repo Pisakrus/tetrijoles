@@ -2,3 +2,12 @@
     height: 40px;
     width: 40px;
 }
+.title{
+    font-family: Helvetica, Arial, sans-serif;
+    color: white;
+    display: flex;
+    align-items: center;
+}
+body{
+    background-color: black;
+}
