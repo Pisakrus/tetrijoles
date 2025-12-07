@@ -1,5 +1,6 @@
 # Tetrijoles
-
-<img width="1191" height="980" alt="image" src="https://github.com/user-attachments/assets/7354ba02-37cb-46a9-a6ad-35fa06a2601a" />
-
 Tetrijoles is a project that is aimed to create a Tetris-like game in a web format with a leaderboard and users to practice front-end and back-end basics.
+
+<img width="150" height="99" alt="image" src="https://github.com/user-attachments/assets/33e72d6f-8b54-4284-9b4e-7cccb88ef3ba" />
+
+
