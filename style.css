@@ -9,6 +9,8 @@
 }
 body{
     background-color: black;
+    scroll-behavior: auto;
+
 }
 #red{
     height: 30px;
