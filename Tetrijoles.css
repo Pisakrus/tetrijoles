@@ -5,9 +5,40 @@
 .title{
     font-family: Helvetica, Arial, sans-serif;
     color: white;
-    display: flex;
-    align-items: center;
+
 }
 body{
     background-color: black;
+}
+#red{
+    height: 30px;
+    width: 30px;
+    background-color: crimson;
+    border-radius: 10px;
+    position: absolute;
+    top: 70px;
+}
+#cyan{
+    height: 30px;
+    width: 30px;
+    background-color: cyan;
+    border-radius: 10px;
+    position: absolute;
+    left: 70px;
+}
+#green{
+    height: 30px;
+    width: 30px;
+    background-color: lime;
+    border-radius: 10px;
+    position: absolute;
+    left: 190px;
+}
+#yellow{
+    height: 30px;
+    width: 30px;
+    background-color: yellow;
+    border-radius: 10px;
+    position: absolute;
+    top: 200px;
 }
