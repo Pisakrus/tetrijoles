@@ -9,5 +9,14 @@ for (let i = 0; i < n_columns; i++) row.push(0);
 let grid = [];
 for (let i = 0; i < n_rows; i++) grid.push(row);
 
-console.log(grid)
+function llamaralgitano() {alert("gitanooo")}
 
+const gitano = document.getElementById("gitano");
+
+const frijoles = document.getElementById("frijoles_negros");
+
+frijoles.addEventListener("click", function() {
+    console.log("gitano tiene hambre")
+    gitano.src = "images/gitano.png"});
+
+gitano.addEventListener("click", llamaralgitano)
