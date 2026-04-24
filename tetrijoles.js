@@ -2,7 +2,7 @@
 // ---Frijoles and gitano---
 
 const gitano = document.getElementById("gitano");
-const frijoles = document.getElementById("frijoles_negros");
+const frijoles = document.getElementById("frijoles");
 
 let gitanocomiendo = false
 frijoles.addEventListener("click", function() {
