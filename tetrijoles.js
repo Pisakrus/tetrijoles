@@ -19,7 +19,9 @@ frijoles.addEventListener("click", function() {
     }
 });    
           
-gitano.addEventListener("click", alert("gitanoo"))
+gitano.addEventListener("click", function() {
+    alert("gitanoo");
+});
 
 
 // ---Tetris---
