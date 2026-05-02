@@ -9,22 +9,28 @@
     <link rel="stylesheet" type="text/css" href="style.css">
     <title>Tetrijoles</title>
 </head>
+
 <body>
     <div style="text-align: center;">
-    <header>
-        <h1 class="title">Tetrijoles</h1>
-    <h2 class="title">A game of Tetris and Beans</h2>
-    </header>
-    <img id="frijoles" src="images/frijoles_negros.png">
-    <img id="gitano" src="">
+        <header>
+            <h1 class="title">Tetrijoles</h1>
+            <h2 class="title">A game of Tetris and Beans</h2>
+        </header>
+
+        <img id="frijoles" src="images/frijoles_negros.png" alt="Frijoles">
+        <img id="gitano" src="">
     </div>
-    <br><br>
-    <hr/>
-    <br><br>
+    <br>
+    <hr>
+
     <script src="gitano.js"></script>
-    
+
     <div class="canvas-container">
-        <canvas id="gameCanvas" width="800" height="1000"></canvas>
+        <canvas id="gameCanvas" width="800" height="1120"></canvas>
     </div>
+
+    <script src="canvasRender.js"></script>
+    <script src="main.js"></script>
+
 </body>
 </html>

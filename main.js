@@ -1,3 +1,7 @@
+window.N_ROWS = 14
+window.N_COLUMNS = 10
+
+
 // ---Frijoles and gitano---
 
 const gitano = document.getElementById("gitano");

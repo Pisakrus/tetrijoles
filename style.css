@@ -21,13 +21,13 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh; /* or whatever height you want */
+    height: 100vh; 
 }
 
 #gameCanvas{
     border: 5px solid white;
-    border-radius: 2px;
-    background-color: blueviolet;
+    border-radius: 10px;
+    background-color: darkslateblue;
 
 }
 
