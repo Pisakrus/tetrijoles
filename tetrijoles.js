@@ -1,29 +1,3 @@
-
-// ---Frijoles and gitano---
-
-const gitano = document.getElementById("gitano");
-const frijoles = document.getElementById("frijoles");
-
-let gitanocomiendo = false
-frijoles.addEventListener("click", function() {
-
-    if (gitanocomiendo) {
-        console.log("gitano tiene hambre")
-        gitano.src = "images/gitano.png"
-       gitanocomiendo = false
-    }
-    else {
-        console.log("gitano comió")
-        gitano.src = ""
-        gitanocomiendo = true
-    }
-});    
-          
-gitano.addEventListener("click", function() {
-    alert("gitanoo");
-});
-
-
 // ---Tetris---
 
 const n_rows = 12
@@ -36,3 +10,6 @@ for (let i = 0; i < n_columns; i++) row.push(0);
 // Creates grid with n_rows of rows
 let grid = [];
 for (let i = 0; i < n_rows; i++) grid.push(row);
+
+
+// Render Canvas

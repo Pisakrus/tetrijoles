@@ -4,7 +4,7 @@
 }
 
 body{
-    background-color: black;
+    background-color: white;
     scroll-behavior: smooth;
 
 }
@@ -16,3 +16,13 @@ body{
 #gitano{
     cursor: pointer;
 }
+
+#gameCanvas{
+
+    background-color: blueviolet;
+    height: 1080px;
+    width: 2160px;
+    display: flex;
+    justify-content: center;
+}
+
