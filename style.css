@@ -4,7 +4,7 @@
 }
 
 body{
-    background-color: white;
+    background-color: rgb(15, 15, 15);
     scroll-behavior: smooth;
 
 }
@@ -17,13 +17,17 @@ body{
     cursor: pointer;
 }
 
-#gameCanvas{
-    border: 5px solid black;
-    border-radius: px;
-    background-color: blueviolet;
-    height: 1000px;
-    width: 800px;
+.canvas-container {
+    display: flex;
     justify-content: center;
     align-items: center;
+    height: 100vh; /* or whatever height you want */
+}
+
+#gameCanvas{
+    border: 5px solid white;
+    border-radius: 2px;
+    background-color: blueviolet;
+
 }
 
