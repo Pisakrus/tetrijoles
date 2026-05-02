@@ -18,11 +18,12 @@ body{
 }
 
 #gameCanvas{
-
+    border: 5px solid black;
+    border-radius: px;
     background-color: blueviolet;
-    height: 1080px;
-    width: 2160px;
-    display: flex;
+    height: 1000px;
+    width: 800px;
     justify-content: center;
+    align-items: center;
 }
 
