@@ -1,43 +1,41 @@
-const CELL_SIZE = 80
+// Functions to render canvas later used in main.js
 
-const canvas = document.getElementById("gameCanvas");
-
-const ctx = canvas.getContext("2d");
-
-ctx.fillStyle = "red";
-ctx.fillRect(0, 0, CELL_SIZE - 1, CELL_SIZE - 1);
-
-
-// Draw grid lines
-
-ctx.strokeStyle = "black";
-ctx.lineWidth = 2
-ctx.globalAlpha = 0.3
-
-// Vertical lines
-for (let i = CELL_SIZE; i < canvas.width; i+=CELL_SIZE) {
-    ctx.beginPath();
-    ctx.moveTo(i, 0);
-    ctx.lineTo(i, canvas.height);
-    ctx.stroke();
-    console.log(i);
+function createCanvasGrid(game) {    
     
-}
+    const canvas = document.getElementById("gameCanvas");
+    const ctx = canvas.getContext("2d");
 
-// Horizontal lines
-for (let i = CELL_SIZE; i < canvas.height; i+=CELL_SIZE) {
-    ctx.beginPath();
-    ctx.moveTo(0, i);
-    ctx.lineTo(canvas.width, i);
-    ctx.stroke();
-    console.log(i);
-}
+    // Draw grid lines
 
-ctx.globalAlpha = 1
+    ctx.strokeStyle = "black";
+    ctx.lineWidth = 2
+    ctx.globalAlpha = 0.3
+
+    // Vertical lines
+    for (let i = CELL_SIZE; i < canvas.width; i+=CELL_SIZE) {
+        ctx.beginPath();
+        ctx.moveTo(i, 0);
+        ctx.lineTo(i, canvas.height);
+        ctx.stroke();
+        console.log(i);
+        
+    }
+
+    // Horizontal lines
+    for (let i = CELL_SIZE; i < canvas.height; i+=CELL_SIZE) {
+        ctx.beginPath();
+        ctx.moveTo(0, i);
+        ctx.lineTo(canvas.width, i);
+        ctx.stroke();
+        console.log(i);
+    }
+
+    ctx.globalAlpha = 1
+}
 
 
 function fillGrid(x, y, color="red") {
-    previousColor = ctx.fillStyle
+    const previousColor = ctx.fillStyle
     ctx.fillStyle = color;
     ctx.fillRect(CELL_SIZE * x + 1.5,
                  CELL_SIZE * y + 1.5,

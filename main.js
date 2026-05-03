@@ -1,30 +1,25 @@
-window.N_ROWS = 14
-window.N_COLUMNS = 10
 
+const game = {
 
-// ---Frijoles and gitano---
+    config : {
+        COLUMNS : 10,
+        ROWS : 14,
+        CELL_SIZE : 80
+    },
 
-const gitano = document.getElementById("gitano");
-const frijoles = document.getElementById("frijoles");
+    state : {
+        board : [],
+        score : 0
+    },
 
-let gitanocomiendo = false
-frijoles.addEventListener("click", function() {
-
-    if (gitanocomiendo) {
-        console.log("gitano tiene hambre")
-        gitano.src = "images/gitano.png"
-       gitanocomiendo = false
+    input : {
+        left : false,
+        right : false,
+        down : false,
+        rotate : false
     }
-    else {
-        console.log("gitano comió")
-        gitano.src = ""
-        gitanocomiendo = true
-    }
-});    
-          
-gitano.addEventListener("click", function() {
-    alert("gitanoo");
-});
 
+}
 
+createBoard(game.config)
 
