@@ -1,5 +1,6 @@
 // Functions to render canvas later used in main.js
 
+CELL_SIZE = game.config.CELL_SIZE
 function createCanvasGrid(game) {    
     
     const canvas = document.getElementById("gameCanvas");
@@ -31,10 +32,13 @@ function createCanvasGrid(game) {
     }
 
     ctx.globalAlpha = 1
+
+    return ctx
 }
 
 
 function fillGrid(x, y, color="red") {
+    ctx = game.state.canvasrender
     const previousColor = ctx.fillStyle
     ctx.fillStyle = color;
     ctx.fillRect(CELL_SIZE * x + 1.5,
@@ -44,15 +48,3 @@ function fillGrid(x, y, color="red") {
     ctx.fillStyle = previousColor
 }
 
-ctx.fillStyle = "red";
-
-
-fillGrid(3, 5, "blue")
-fillGrid(2, 4)
-fillGrid(3, 4)
-fillGrid(4,4)
-fillGrid(5, 4, "green")
-fillGrid(3, 3)
-fillGrid(2, 3)
-fillGrid(4, 3, "darkgreen")
-fillGrid(5, 3, "darkgreen")

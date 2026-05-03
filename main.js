@@ -1,25 +1,16 @@
 
-const game = {
+game.state.board = createBoard(game.config)
+game.state.canvasrender = createCanvasGrid(game)
 
-    config : {
-        COLUMNS : 10,
-        ROWS : 14,
-        CELL_SIZE : 80
-    },
 
-    state : {
-        board : [],
-        score : 0
-    },
 
-    input : {
-        left : false,
-        right : false,
-        down : false,
-        rotate : false
-    }
 
-}
-
-createBoard(game.config)
-
+fillGrid(3, 5, "blue")
+fillGrid(2, 4)
+fillGrid(3, 4)
+fillGrid(4,4)
+fillGrid(5, 4, "green")
+fillGrid(3, 3)
+fillGrid(2, 3)
+fillGrid(4, 3, "darkgreen")
+fillGrid(5, 3, "darkgreen")
