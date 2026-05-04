@@ -9,7 +9,8 @@ const game = {
     state : {
         board : [],
         score : 0,
-        canvasrender : null
+        canvas : null,
+        canvasCtx : null
     },
 
     input : {
@@ -19,4 +20,4 @@ const game = {
         rotate : false
     }
 
-}
+};

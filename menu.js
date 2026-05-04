@@ -3,7 +3,7 @@
 const gitano = document.getElementById("gitano");
 const frijoles = document.getElementById("frijoles");
 
-let gitanocomiendo = false
+let gitanocomiendo = false;
 frijoles.addEventListener("click", function() {
 
     if (gitanocomiendo) {
@@ -15,7 +15,7 @@ frijoles.addEventListener("click", function() {
         console.log("gitano comió")
         gitano.src = ""
         gitanocomiendo = true
-    }
+    };
 });    
           
 gitano.addEventListener("click", function() {

@@ -6,7 +6,6 @@
 body{
     background-color: rgb(15, 15, 15);
     scroll-behavior: smooth;
-
 }
 
 #frijoles{
@@ -22,12 +21,12 @@ body{
     justify-content: center;
     align-items: center;
     height: 100vh; 
+    border: 2px solid wheat;
 }
 
 #gameCanvas{
     border: 5px solid white;
     border-radius: 10px;
     background-color: darkslateblue;
-
 }
 
