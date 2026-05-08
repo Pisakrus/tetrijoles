@@ -106,3 +106,31 @@ function createPiece(game, newShapeId,) {
     game.activePiece.blockMap = SHAPE_MAPS[SHAPES[newShapeId]]
 
 }
+
+// Check if movement of pieces collides with board.
+function canMove(game, dx, dy) {
+    const ROWS = game.config.ROWS;
+    const COLUMNS = game.config.COLUMNS;
+    const board = game.state.board;
+    const ox = game.activePiece.x;
+    const oy = game.activePiece.y;
+    const blockMap = game.activePiece.blockMap;
+    
+    // Checks target position of every block
+    for(let block of blockMap) {
+        let x = ox + block.x + dx;
+        let y = oy + block.y + dy;
+
+        if (x < 0 || x >= COLUMNS) return false; // Checks collision with lateral walls
+
+        if (y >= ROWS) return false; // Checks collision with floor of the board
+
+        if (y < 0) continue; // Prevents an index error. Blocks above the visible board are ignored for collision checks
+
+        if (board[y][x]) return false; // Checks collision with board blocks
+
+    };
+
+    return true;
+};
+
