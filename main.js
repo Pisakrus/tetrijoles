@@ -1,12 +1,21 @@
 createBoard(game);
 
-game.state.board[3][5] = 1
-game.state.board[4][5] = 1
-game.state.board[5][5] = 2
-game.state.board[3][4] = 3
 
-createCanvas(game)
-DrawCanvasBoard(game)
+game.state.board[6][1] = 1
+game.state.board[6][2] = 2
+game.state.board[6][3] = 3
+game.state.board[6][4] = 4
+game.state.board[6][5] = 5
+
+game.state.board[7][1] = 1
+game.state.board[7][2] = 2
+game.state.board[7][3] = 3
+game.state.board[7][4] = 4
+game.state.board[7][5] = 5
+
+
+createCanvas(game);
+drawCanvasBoard(game);
 
 
 
@@ -28,7 +37,7 @@ function gameLoop(timestamp) {
         // Update logic and input (placeholder)
         dropTimer -= STEP;
     };
-    DrawCanvasBoard(game);
+    drawCanvasBoard(game);
 
     LastTime = timestamp;
 

@@ -10,7 +10,7 @@ function createCanvas(game) {
 };
 
 
-function DrawGridLines(game) {
+function drawGridLines(game) {
     const CELL_SIZE = game.config.CELL_SIZE;
     const canvas = game.state.canvas;
     const ctx = game.state.canvasCtx;
@@ -19,7 +19,7 @@ function DrawGridLines(game) {
     ctx.lineWidth = 2;
     ctx.globalAlpha = 0.3;
 
-    // Vertical linesnull
+    // Vertical lines
     for (let i = CELL_SIZE; i < canvas.width; i+=CELL_SIZE) {
         ctx.beginPath();
         ctx.moveTo(i, 0);
@@ -42,7 +42,8 @@ function DrawGridLines(game) {
 const COLORS = ["red", "blue", "darkgreen", "yellow"];
 
 
-function fillCanvasCell(game, x, y, color="red") {
+function fillCanvasCell(game, x, y, color="white") { //White color in case something goes wrong
+
     const ctx = game.state.canvasCtx;
     const  CELL_SIZE = game.config.CELL_SIZE;
     const previousColor = ctx.fillStyle;
@@ -56,17 +57,20 @@ function fillCanvasCell(game, x, y, color="red") {
 };
 
 
-function DrawCanvasBoard(game) {
+function drawCanvasBoard(game) {
+    const ROWS = game.config.ROWS;
+    const COLUMNS = game.config.COLUMNS;
     const ctx = game.state.canvasCtx;
-    ctx.clearRect(0, 0, game.state.canvas.width, game.state.canvas.height);
-    DrawGridLines(game);
 
-    for (let y = 0; y < game.config.ROWS; y++) {
-        for (let x = 0; x < game.config.COLUMNS; x++) {
+    ctx.clearRect(0, 0, game.state.canvas.width, game.state.canvas.height);
+    drawGridLines(game);
+
+    for (let y = 0; y < ROWS; y++) {
+        for (let x = 0; x < COLUMNS; x++) {
 
             const cellValue = game.state.board[y][x];
-            if (cellValue !== 0){ 
-                fillCanvasCell(game, x, y, COLORS[cellValue]);
+            if (cellValue !== 0) {
+                fillCanvasCell(game, x, y, COLORS[cellValue - 1]); // Assumes colors index starts at 0
             };
 
         };
