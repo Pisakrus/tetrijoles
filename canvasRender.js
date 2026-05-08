@@ -56,7 +56,7 @@ function fillCanvasCell(game, x, y, color="white") { //White color in case somet
     ctx.fillStyle = previousColor;
 };
 
-function DrawCanvasPiece(game) {
+function drawCanvasPiece(game) {
     const blockMap = game.activePiece.blockMap;
     const ox = game.activePiece.x;
     const oy = game.activePiece.y;

@@ -24,9 +24,15 @@ const game = {
 
     input : {
         left : false,
+        hLeft : false,
+
         right : false,
+        hRight : false,
+
         down : false,
-        rotate : false
+        hDown : false,
+
+        rotate : false,
     }
 
 };

@@ -1,5 +1,5 @@
 createBoard(game);
-createPiece(game, 2)
+createPiece(game, 1);
 
 game.state.board[6][1] = 1
 game.state.board[6][2] = 2
@@ -16,14 +16,21 @@ game.state.board[7][5] = 5
 
 createCanvas(game);
 drawCanvasBoard(game);
-DrawCanvasPiece(game);
+drawCanvasPiece(game);
 
 
 //---Game loop---
 
 let LastTime = 0;
-let dropTimer = 0;
+
+let moveTimer = 0;
+const MOVE_STEP = 90;
+
+let gravityTimer = 0;
+const GRAVITY_STEP = 500;
+
 // Render at 30 FPS
+let frameTimer = 0;
 const FPS = 30;
 const STEP = 1000 / FPS;
 
@@ -31,13 +38,22 @@ const STEP = 1000 / FPS;
 
 function gameLoop(timestamp) {
     let deltaTime = timestamp - LastTime;
-    dropTimer += deltaTime;
+    frameTimer += deltaTime;
+    moveTimer += deltaTime;
 
-    if (dropTimer > STEP) {
-        // Update logic and input (placeholder)
-        dropTimer -= STEP;
+    updateInput(game);
+
+    while (moveTimer >= MOVE_STEP) {
+        move(game);
+        moveTimer -= MOVE_STEP;
     };
-    drawCanvasPiece(game);
+
+    while (frameTimer >= STEP) {
+        drawCanvasBoard(game);
+        drawCanvasPiece(game);
+        frameTimer -= STEP;
+    };
+    
 
     LastTime = timestamp;
 

@@ -31,8 +31,7 @@ function updateInput(game) {
     game.input.down =
         keys["ArrowDown"] || keys["KeyS"] ;
 
-    game.input.up =
+    game.input.rotate =
         keys["ArrowUp"] || keys["KeyW"];
 };
-
 
