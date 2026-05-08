@@ -81,11 +81,11 @@ const SHAPE_MAPS = {
     0 1 0
     0 1 0
     */
-   // Center is at the upper block     
+   // Center is at the lower block  
     "I" : [{x : 0, y : 0},
            {x : 0, y : -1},
-           {x : 0, y : 1},
-           {x : 0, y : 2}],
+           {x : 0, y : -2},
+           {x : 0, y : 1}],
 
     /*
     0 0 0
@@ -99,3 +99,10 @@ const SHAPE_MAPS = {
      
 };
 
+function createPiece(game, newShapeId,) {
+    game.activePiece.shapeId = newShapeId;
+    game.activePiece.x = 4;
+    game.activePiece.y =0;
+    game.activePiece.blockMap = SHAPE_MAPS[SHAPES[newShapeId]]
+
+}

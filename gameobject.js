@@ -18,8 +18,8 @@ const game = {
         x : 5,
         y : 3,
         rotation : 0,
-        shape : 0,
-        blockmap : []
+        shapeId : 0,
+        blockMap : []
     },
 
     input : {

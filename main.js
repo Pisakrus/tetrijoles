@@ -1,5 +1,5 @@
 createBoard(game);
-
+createPiece(game, 2)
 
 game.state.board[6][1] = 1
 game.state.board[6][2] = 2
@@ -16,7 +16,7 @@ game.state.board[7][5] = 5
 
 createCanvas(game);
 drawCanvasBoard(game);
-
+DrawCanvasPiece(game);
 
 
 //---Game loop---
@@ -37,7 +37,7 @@ function gameLoop(timestamp) {
         // Update logic and input (placeholder)
         dropTimer -= STEP;
     };
-    drawCanvasBoard(game);
+    drawCanvasPiece(game);
 
     LastTime = timestamp;
 

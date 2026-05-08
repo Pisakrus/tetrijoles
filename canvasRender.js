@@ -39,7 +39,7 @@ function drawGridLines(game) {
     ctx.globalAlpha = 1;
 };
 
-const COLORS = ["red", "blue", "darkgreen", "yellow"];
+const COLORS = ["red", "green", "blue", "orange"];
 
 
 function fillCanvasCell(game, x, y, color="white") { //White color in case something goes wrong
@@ -56,6 +56,19 @@ function fillCanvasCell(game, x, y, color="white") { //White color in case somet
     ctx.fillStyle = previousColor;
 };
 
+function DrawCanvasPiece(game) {
+    const blockMap = game.activePiece.blockMap;
+    const ox = game.activePiece.x;
+    const oy = game.activePiece.y;
+    const shapeId = game.activePiece.shapeId;
+
+    for(let block of blockMap) {
+        let x = ox + block.x;
+        let y = oy + block.y;
+        fillCanvasCell(game, x, y, COLORS[shapeId]);
+    };
+
+};
 
 function drawCanvasBoard(game) {
     const ROWS = game.config.ROWS;
@@ -75,5 +88,4 @@ function drawCanvasBoard(game) {
 
         };
     };
-
 };
