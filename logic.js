@@ -20,7 +20,7 @@ function createBoard(game) {
 function rowsToClear(board) {
     let fullRows = [];
 
-    for(let y = 0; y < board.length; y++) {
+    for (let y = 0; y < board.length; y++) {
         if (board[y].every(x => x !== 0)) {
             fullRows.push(y);
         };
@@ -29,15 +29,73 @@ function rowsToClear(board) {
 };      
 
 
+// Deletes n full rows and insert n new ones at top.
 function clearRows(board, ...rowsToBeCleared) {
     
-    for(i of rowsToBeCleared) {
-        board.slice(i, 1)
-        board.unshift(new Array(board.length).fill(0))
+    for (i of rowsToBeCleared) {
+        board.slice(i, 1);
+        board.unshift(new Array(board.length).fill(0));
     };
-}
+};
 
 function comboScore(nrows) {
     return nrows ** 2 * 10;
+};
+
+const SHAPES = ["L", "T", "I", "O"];
+
+
+const SHAPE_MAPS = {
+    // Shape = central block and vectors from central block to other cells.
+    // First coords are the central block. 
+    // Priority is top to bottom (negative to positive) and left to right (negative to positive).
+
+    "EMPTY" :[{x : 0, y : 0},
+             {x : 0, y : 0},
+             {x : 0, y : 0},
+             {x : 0, y : 0}],
+
+    /*
+    0 1 0
+    0 1 0
+    0 1 1
+    */
+   "L" : [{x : 0, y : 0},
+          {x : 0, y : -1},
+          {x : 0, y : 1},
+          {x : 1, y : 1}],
+
+     /*
+    1 1 1
+    0 1 0
+    0 0 0
+    */         
+    "T" : [{x : 0, y : 0},
+           {x : 0, y : -1},
+           {x : -1, y : -1},
+           {x : 1, y : -1}],
+
+    /*
+    0 1 0
+    0 1 0
+    0 1 0
+    0 1 0
+    */
+   // Center is at the upper block     
+    "I" : [{x : 0, y : 0},
+           {x : 0, y : -1},
+           {x : 0, y : 1},
+           {x : 0, y : 2}],
+
+    /*
+    0 0 0
+    0 1 1
+    0 1 1
+    */   
+    "O" : [{x : 0, y : 0},
+           {x : 0, y : 1},
+           {x : 1, y : 0},
+           {x : 1, y : 1}],
+     
 };
 
