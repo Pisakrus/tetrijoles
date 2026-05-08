@@ -134,3 +134,21 @@ function canMove(game, dx, dy) {
     return true;
 };
 
+
+function move(game) {
+    const left = game.input.left;
+    const right = game.input.right;
+    const down = game.input.down;
+    let dx = 0;
+    let dy = 0;
+
+    if (right) dx += 1;
+    else if (left) dx -= 1;
+    if (down) dy += 1;
+
+    if (canMove(game, dx, dy)) {
+        game.activePiece.x += dx;
+        game.activePiece.y += dy;
+    }
+};
+
