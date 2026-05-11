@@ -23,16 +23,16 @@ const game = {
     },
 
     input : {
-        left : false,
-        hLeft : false,
+        leftPressed : false,
+        leftHeld : false,
 
-        right : false,
-        hRight : false,
+        rightPressed : false,
+        rightHeld : false,
 
-        down : false,
-        hDown : false,
+        downPressed : false,
+        downHeld : false,
 
-        rotate : false,
+        rotatePressed : false,
     }
 
 };

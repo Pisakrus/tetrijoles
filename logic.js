@@ -136,9 +136,10 @@ function canMove(game, dx, dy) {
 
 
 function move(game) {
-    const left = game.input.left;
-    const right = game.input.right;
-    const down = game.input.down;
+    const left = game.input.sLeft;
+    const right = game.input.sRight;
+    const down = game.input.sDown;
+
     let dx = 0;
     let dy = 0;
 

@@ -35,3 +35,17 @@ function updateInput(game) {
         keys["ArrowUp"] || keys["KeyW"];
 };
 
+function saveInput(game) {
+    game.input.sLeft = game.input.left;
+    game.input.sRight = game.input.right;
+    game.input.sDown = game.input.down;
+    game.input.sRotate = game.input.rotate;
+}
+
+function deleteSavedInput(game) {
+    game.input.sLeft = false;
+    game.input.sRight = false;
+    game.input.sDown = false;
+    game.input.sRotate = false;
+}
+

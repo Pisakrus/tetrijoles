@@ -24,7 +24,7 @@ drawCanvasPiece(game);
 let LastTime = 0;
 
 let moveTimer = 0;
-const MOVE_STEP = 90;
+const MOVE_STEP = 75;
 
 let gravityTimer = 0;
 const GRAVITY_STEP = 500;
@@ -37,23 +37,26 @@ const STEP = 1000 / FPS;
 
 
 function gameLoop(timestamp) {
+    if (!LastTime) LastTime = timestamp;
     let deltaTime = timestamp - LastTime;
     frameTimer += deltaTime;
     moveTimer += deltaTime;
 
     updateInput(game);
+    saveInput(game);
 
-    while (moveTimer >= MOVE_STEP) {
+    if (moveTimer >= MOVE_STEP) {
         move(game);
+        deleteSavedInput(game);
         moveTimer -= MOVE_STEP;
     };
+    if (frameTimer >= STEP) {
 
-    while (frameTimer >= STEP) {
         drawCanvasBoard(game);
         drawCanvasPiece(game);
         frameTimer -= STEP;
     };
-    
+
 
     LastTime = timestamp;
 
