@@ -27,7 +27,7 @@ let moveTimer = 0;
 const MOVE_STEP = 75;
 
 let gravityTimer = 0;
-const GRAVITY_STEP = 500;
+const GRAVITY_STEP = 800;
 
 // Render at 30 FPS
 let frameTimer = 0;
@@ -39,8 +39,10 @@ const STEP = 1000 / FPS;
 function gameLoop(timestamp) {
     if (!LastTime) LastTime = timestamp;
     let deltaTime = timestamp - LastTime;
+
     frameTimer += deltaTime;
     moveTimer += deltaTime;
+    gravityTimer += deltaTime;
 
     updateInput(game);
     saveInput(game);
@@ -56,7 +58,10 @@ function gameLoop(timestamp) {
         drawCanvasPiece(game);
         frameTimer -= STEP;
     };
-
+    if (gravityTimer >= GRAVITY_STEP) {
+        gravity(game);
+        gravityTimer -= GRAVITY_STEP;
+    };
 
     LastTime = timestamp;
 

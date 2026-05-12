@@ -39,7 +39,7 @@ function drawGridLines(game) {
     ctx.globalAlpha = 1;
 };
 
-const COLORS = ["red", "green", "blue", "orange"];
+const COLORS = ["red", "green", "blue", "orange", "pink"];
 
 
 function fillCanvasCell(game, x, y, color="white") { //White color in case something goes wrong

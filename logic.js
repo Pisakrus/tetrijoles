@@ -99,7 +99,12 @@ const SHAPE_MAPS = {
      
 };
 
-function createPiece(game, newShapeId,) {
+function createRandomShapeId() {
+    return Math.floor(Math.random() * SHAPES.length);
+}
+
+function createPiece(game) {
+    const newShapeId = createRandomShapeId();
     game.activePiece.shapeId = newShapeId;
     game.activePiece.x = 4;
     game.activePiece.y =0;
@@ -152,4 +157,31 @@ function move(game) {
         game.activePiece.y += dy;
     }
 };
+
+
+function placePiece(game) {
+    const ox = game.activePiece.x;
+    const oy = game.activePiece.y;
+    const shapeId = game.activePiece.shapeId;
+    const blockMap = game.activePiece.blockMap;
+    
+    for(block of blockMap) {
+        let x = ox + block.x;
+        let y = oy + block.y
+
+        game.state.board[y][x] = shapeId + 1;
+    }
+}
+
+
+function gravity(game) {
+    if (canMove(game, 0, 1)) {
+        game.activePiece.y += 1
+    }
+    else {
+        placePiece(game);
+        createPiece(game); 
+    }
+}
+
 
