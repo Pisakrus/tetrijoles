@@ -184,4 +184,16 @@ function gravity(game) {
     }
 }
 
+function rotate(game, rotations=1) {
+    if (!game.input.rotate) return;
+
+    const rotatedBlockMap = game.activePiece.blockMap;
+
+    for (let i = 0; i < rotations; i++) {
+        for (block of rotatedBlockMap) {
+            [block.x, block.y] = [block.y, -block.x]; // Turn clockwise a block.
+        }
+    };
+}
+
 

@@ -49,6 +49,7 @@ function gameLoop(timestamp) {
 
     if (moveTimer >= MOVE_STEP) {
         move(game);
+        rotate(game);
         deleteSavedInput(game);
         moveTimer -= MOVE_STEP;
     };
