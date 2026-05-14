@@ -24,6 +24,7 @@ const game = {
 
     },
 
+    //! Input should be reworked
     input : {
         leftPressed : false,
         leftHeld : false,
@@ -35,6 +36,8 @@ const game = {
         downHeld : false,
 
         rotatePressed : false,
+
+        drop : false
     }
 
 };

@@ -33,6 +33,8 @@ function updateInput(game) {
 
     game.input.rotate =
         keys["ArrowUp"] || keys["KeyW"];
+    
+    game.input.drop = keys["Space"];
 };
 
 function saveInput(game) {

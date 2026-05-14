@@ -124,18 +124,18 @@ function canMove(game, dx, dy) {
     const oy = game.activePiece.y;
     const blockMap = game.activePiece.blockMap;
     
-    // Checks target position of every block
+    // Check target position of every block
     for(let block of blockMap) {
         let x = ox + block.x + dx;
         let y = oy + block.y + dy;
 
-        if (x < 0 || x >= COLUMNS) return false; // Checks collision with lateral walls
+        if (x < 0 || x >= COLUMNS) return false; // Check collision with lateral walls
 
-        if (y >= ROWS) return false; // Checks collision with floor of the board
+        if (y >= ROWS) return false; // Check collision with floor of the board
 
-        if (y < 0) continue; // Prevents an index error. Blocks above the visible board are ignored for collision checks
+        if (y < 0) continue; // Prevent an index error. Blocks above the visible board are ignored for collision checks
 
-        if (board[y][x]) return false; // Checks collision with board blocks
+        if (board[y][x]) return false; // Check collision with board blocks
 
     };
 
@@ -277,5 +277,15 @@ function updateGhostPiece(game) {
         x : ox + block.x,
         y : y + block.y
     }))
+}
+
+function hardDrop(game) {
+    const drop = game.input.drop;
+
+    if (!drop) return; // Leave function if drop is false
+    
+    game.activePiece.y = getGhostY(game);
+    placePiece(game);
+    createPiece(game);
 }
 

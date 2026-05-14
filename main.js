@@ -34,6 +34,7 @@ function gameLoop(timestamp) {
     saveInput(game);
 
     if (moveTimer >= MOVE_STEP) {
+        hardDrop(game);
         move(game);
         rotate(game);
         updateGhostPiece(game);
