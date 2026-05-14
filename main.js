@@ -39,6 +39,7 @@ function gameLoop(timestamp) {
         rotate(game);
         updateGhostPiece(game);
         deleteSavedInput(game);
+        clearRows(game);
         moveTimer -= MOVE_STEP;
     };
     if (frameTimer >= STEP) {

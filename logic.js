@@ -34,13 +34,15 @@ function rowsToClear(game) {
 function clearRows(game) {
     const COLUMNS = game.config.COLUMNS;
     const board = game.state.board;
-    const toClear = rowsToClear(game)
+    const toClear = rowsToClear(game);
 
     for (let i of toClear) {
         board.splice(i, 1); // Delete row
         board.unshift(new Array(COLUMNS).fill(0)); // Create new row at the top
+        const fartSound = new Audio("sounds/dry-fart.mp3");
+        fartSound.play().catch(console.error);
     };
-};
+};  
 
 function comboScore(nrows) {
     return nrows ** 2 * 10;
@@ -283,7 +285,7 @@ function hardDrop(game) {
     const drop = game.input.drop;
 
     if (!drop) return; // Leave function if drop is false
-    
+
     game.activePiece.y = getGhostY(game);
     placePiece(game);
     createPiece(game);
