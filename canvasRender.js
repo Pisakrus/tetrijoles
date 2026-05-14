@@ -17,7 +17,7 @@ function drawGridLines(game) {
 
     ctx.strokeStyle = "black";
     ctx.lineWidth = 2;
-    ctx.globalAlpha = 0.3;
+    ctx.globalAlpha = 0.4;
 
     // Vertical lines
     for (let i = CELL_SIZE; i < canvas.width; i+=CELL_SIZE) {

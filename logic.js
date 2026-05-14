@@ -183,20 +183,73 @@ function gravity(game) {
     }
 }
 
-//! ---Doesn't detect collisions---
+
 function rotate(game, rotations=1) {
     if (!game.input.sRotate) return;
     if (game.activePiece.shapeId === 0) return; 
 
-    const rotatedBlockMap = game.activePiece.blockMap;
+    const blockMap = game.activePiece.blockMap;
+    const originalBlockMap = blockMap.map(block => ({...block}));
 
     game.input.sRotate = false;
     for (let i = 0; i < rotations; i++) {
-        for (block of rotatedBlockMap) {
+        for (const block of blockMap) {
             [block.x, block.y] = [block.y, -block.x]; // Turn clockwise a block.
         }
     };
-}
+
+    // ---Check for collisions and correct position---
+
+    if (canMove(game, 0, 0)) {
+        return; // Simple rotation was succesful
+    }
+    else if (canMove(game, 0, -1)) {
+        game.activePiece.y -= 1; // Piece collisions with something under it, so it goes one cell up.
+    }
+
+
+    // Check 1 cell lateral movements
+    else if  (canMove(game, 1, 0)) {
+        game.activePiece.x += 1;
+    }
+    else if  (canMove(game, -1, 0)) {
+        game.activePiece.x -= 1;
+    }
+
+    // Check 2 cell movements
+    else if (canMove(game, 0, -2)) {
+        game.activePiece.y -= 2; // Piece collisions with something under it, so it goes one cell up.
+    }
+    else if  (canMove(game, 2, 0)) {
+        game.activePiece.x += 2;
+    }
+    else if  (canMove(game, -2, 0)) {
+        game.activePiece.x -= 2;x   
+    }
+
+    // Check diagonals
+    else if  (canMove(game, 1, 1)) {
+        game.activePiece.x += 1;
+        game.activePiece.y += 1;
+    }
+    else if  (canMove(game, 1, -1)) {
+        game.activePiece.x += 1;
+        game.activePiece.y -= 1;
+    }
+    else if  (canMove(game, -1, 1)) {
+        game.activePiece.x -= 1;
+        game.activePiece.y += 1;
+    }
+    else if  (canMove(game, -1, -1)) {
+        game.activePiece.x -= 1;
+        game.activePiece.y -= 1;
+    }
+
+    else {
+        game.activePiece.blockMap = originalBlockMap; // Reverts rotation attempt
+    }
+}   
+
 
 function getGhostY(game) {
     const oy = game.activePiece.y;
@@ -220,4 +273,5 @@ function updateGhostPiece(game) {
         x : ox + block.x,
         y : y + block.y
     }))
-} 
+}
+

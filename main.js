@@ -43,8 +43,9 @@ function gameLoop(timestamp) {
     if (frameTimer >= STEP) {
 
         drawCanvasBoard(game);
-        drawCanvasPiece(game);
         drawCanvasGhost(game);
+        drawCanvasPiece(game);
+
         frameTimer -= STEP;
     };
     if (gravityTimer >= GRAVITY_STEP) {
