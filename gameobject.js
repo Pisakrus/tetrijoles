@@ -19,7 +19,9 @@ const game = {
         y : 3,
         rotation : 0,
         shapeId : 0,
-        blockMap : []
+        blockMap : [],
+        ghostPiece : []
+
     },
 
     input : {

@@ -39,10 +39,10 @@ function drawGridLines(game) {
     ctx.globalAlpha = 1;
 };
 
-const COLORS = ["red", "green", "blue", "orange", "pink"];
+const COLORS = ["red", "lime", "cyan", "orange", "pink"];
 
 
-function fillCanvasCell(game, x, y, color="white") { //White color in case something goes wrong
+function drawCanvasCell(game, x, y, color="white") { //White color in case something goes wrong
 
     const ctx = game.state.canvasCtx;
     const  CELL_SIZE = game.config.CELL_SIZE;
@@ -65,10 +65,23 @@ function drawCanvasPiece(game) {
     for(let block of blockMap) {
         let x = ox + block.x;
         let y = oy + block.y;
-        fillCanvasCell(game, x, y, COLORS[shapeId]);
+        drawCanvasCell(game, x, y, COLORS[shapeId]);
     };
 
 };
+
+
+function drawCanvasGhost(game) {
+    const ctx = game.state.canvasCtx;
+    const ghostPiece = game.activePiece.ghostPiece;
+    const shapeId = game.activePiece.shapeId;
+
+    ctx.globalAlpha = 0.3;
+    for (block of ghostPiece) {
+        drawCanvasCell(game, block.x, block.y, COLORS[shapeId]);
+    }
+    ctx.globalAlpha = 1;
+}   
 
 function drawCanvasBoard(game) {
     const ROWS = game.config.ROWS;
@@ -83,7 +96,7 @@ function drawCanvasBoard(game) {
 
             const cellValue = game.state.board[y][x];
             if (cellValue !== 0) {
-                fillCanvasCell(game, x, y, COLORS[cellValue - 1]); // Assumes colors index starts at 0
+                drawCanvasCell(game, x, y, COLORS[cellValue - 1]); // Assumes colors index starts at 0
             };
 
         };

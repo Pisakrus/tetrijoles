@@ -1,23 +1,9 @@
 createBoard(game);
 createPiece(game, 1);
 
-game.state.board[6][1] = 1
-game.state.board[6][2] = 2
-game.state.board[6][3] = 3
-game.state.board[6][4] = 4
-game.state.board[6][5] = 5
-
-game.state.board[7][1] = 1
-game.state.board[7][2] = 2
-game.state.board[7][3] = 3
-game.state.board[7][4] = 4
-game.state.board[7][5] = 5
-
-
 createCanvas(game);
 drawCanvasBoard(game);
 drawCanvasPiece(game);
-
 
 //---Game loop---
 
@@ -50,6 +36,7 @@ function gameLoop(timestamp) {
     if (moveTimer >= MOVE_STEP) {
         move(game);
         rotate(game);
+        updateGhostPiece(game);
         deleteSavedInput(game);
         moveTimer -= MOVE_STEP;
     };
@@ -57,6 +44,7 @@ function gameLoop(timestamp) {
 
         drawCanvasBoard(game);
         drawCanvasPiece(game);
+        drawCanvasGhost(game);
         frameTimer -= STEP;
     };
     if (gravityTimer >= GRAVITY_STEP) {

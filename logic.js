@@ -42,7 +42,7 @@ function comboScore(nrows) {
     return nrows ** 2 * 10;
 };
 
-const SHAPES = ["L", "T", "I", "O"];
+const SHAPES = ["O", "L", "T", "I"];
 
 
 const SHAPE_MAPS = {
@@ -54,6 +54,15 @@ const SHAPE_MAPS = {
              {x : 0, y : 0},
              {x : 0, y : 0},
              {x : 0, y : 0}],
+    /*
+    0 0 0
+    0 1 1
+    0 1 1
+    */   
+    "O" : [{x : 0, y : 0},
+           {x : 0, y : 1},
+           {x : 1, y : 0},
+           {x : 1, y : 1}],
 
     /*
     0 1 0
@@ -86,16 +95,6 @@ const SHAPE_MAPS = {
            {x : 0, y : -1},
            {x : 0, y : -2},
            {x : 0, y : 1}],
-
-    /*
-    0 0 0
-    0 1 1
-    0 1 1
-    */   
-    "O" : [{x : 0, y : 0},
-           {x : 0, y : 1},
-           {x : 1, y : 0},
-           {x : 1, y : 1}],
      
 };
 
@@ -108,7 +107,7 @@ function createPiece(game) {
     game.activePiece.shapeId = newShapeId;
     game.activePiece.x = 4;
     game.activePiece.y =0;
-    game.activePiece.blockMap = SHAPE_MAPS[SHAPES[newShapeId]]
+    game.activePiece.blockMap = SHAPE_MAPS[SHAPES[newShapeId]].map(b => ({...b})); 
 
 }
 
@@ -184,11 +183,14 @@ function gravity(game) {
     }
 }
 
+//! ---Doesn't detect collisions---
 function rotate(game, rotations=1) {
-    if (!game.input.rotate) return;
+    if (!game.input.sRotate) return;
+    if (game.activePiece.shapeId === 0) return; 
 
     const rotatedBlockMap = game.activePiece.blockMap;
 
+    game.input.sRotate = false;
     for (let i = 0; i < rotations; i++) {
         for (block of rotatedBlockMap) {
             [block.x, block.y] = [block.y, -block.x]; // Turn clockwise a block.
@@ -196,4 +198,26 @@ function rotate(game, rotations=1) {
     };
 }
 
+function getGhostY(game) {
+    const oy = game.activePiece.y;
+    const ROWS = game.config.ROWS;
+    let dy = 0;
+    let y = oy + dy;
+    while (y < ROWS) {
+        dy++;
+        y = oy + dy;
+        if (!canMove(game, 0, dy)) return y - 1;
+    };
+    return y;
+}
 
+function updateGhostPiece(game) {
+    const ox = game.activePiece.x;
+    const y = getGhostY(game);
+    const blockMap = game.activePiece.blockMap;
+
+    game.activePiece.ghostPiece = blockMap.map(block => ({
+        x : ox + block.x,
+        y : y + block.y
+    }))
+} 
