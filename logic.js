@@ -16,9 +16,10 @@ function createBoard(game) {
     game.state.board = board;
 };
 
-// Checks full rows and returns their index in a list.
-function rowsToClear(board) {
-    let fullRows = [];
+// Check full rows and returns their index in a list.
+function rowsToClear(game) {
+    const board = game.state.board; 
+    const fullRows = new Array();
 
     for (let y = 0; y < board.length; y++) {
         if (board[y].every(x => x !== 0)) {
@@ -29,12 +30,15 @@ function rowsToClear(board) {
 };      
 
 
-// Deletes n full rows and insert n new ones at top.
-function clearRows(board, ...rowsToBeCleared) {
-    
-    for (i of rowsToBeCleared) {
-        board.slice(i, 1);
-        board.unshift(new Array(board.length).fill(0));
+// Delete n full rows and insert n new ones at top.
+function clearRows(game) {
+    const COLUMNS = game.config.COLUMNS;
+    const board = game.state.board;
+    const toClear = rowsToClear(game)
+
+    for (let i of toClear) {
+        board.splice(i, 1); // Delete row
+        board.unshift(new Array(COLUMNS).fill(0)); // Create new row at the top
     };
 };
 

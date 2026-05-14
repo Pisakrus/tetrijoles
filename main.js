@@ -50,6 +50,7 @@ function gameLoop(timestamp) {
     };
     if (gravityTimer >= GRAVITY_STEP) {
         gravity(game);
+        clearRows(game);
         gravityTimer -= GRAVITY_STEP;
     };
 
