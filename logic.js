@@ -146,9 +146,9 @@ function canMove(game, dx, dy) {
 
 
 function move(game) {
-    const left = game.input.sLeft;
-    const right = game.input.sRight;
-    const down = game.input.sDown;
+    const left = game.input.left;
+    const right = game.input.right;
+    const down = game.input.down;
 
     let dx = 0;
     let dy = 0;
@@ -191,13 +191,11 @@ function gravity(game) {
 
 
 function rotate(game, rotations=1) {
-    if (!game.input.sRotate) return;
     if (game.activePiece.shapeId === 0) return; 
 
     const blockMap = game.activePiece.blockMap;
     const originalBlockMap = blockMap.map(block => ({...block}));
 
-    game.input.sRotate = false;
     for (let i = 0; i < rotations; i++) {
         for (const block of blockMap) {
             [block.x, block.y] = [block.y, -block.x]; // Turn clockwise a block.
@@ -230,7 +228,7 @@ function rotate(game, rotations=1) {
         game.activePiece.x += 2;
     }
     else if  (canMove(game, -2, 0)) {
-        game.activePiece.x -= 2;x   
+        game.activePiece.x -= 2; 
     }
 
     // Check diagonals
@@ -282,11 +280,8 @@ function updateGhostPiece(game) {
 }
 
 function hardDrop(game) {
-    const drop = game.input.drop;
-
-    if (!drop) return; // Leave function if drop is false
-
     game.activePiece.y = getGhostY(game);
+    
     placePiece(game);
     createPiece(game);
 }

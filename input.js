@@ -22,32 +22,33 @@ window.addEventListener("keyup", (event) => {
 
 // When called, process keys pressed to update game.input
 function updateInput(game) {
-    game.input.left =
-        keys["ArrowLeft"] || keys["KeyA"];
 
-    game.input.right =
-        keys["ArrowRight"] || keys["KeyD"];
+    //Add input
+    deltaTime = game.state.deltaTime;
 
-    game.input.down =
-        keys["ArrowDown"] || keys["KeyS"] ;
+    if (keys["ArrowLeft"] || keys["KeyA"]) game.input.left += deltaTime;
+    if (keys["ArrowRight"] || keys["KeyD"]) game.input.right += deltaTime;
+    if (keys["ArrowDown"] || keys["KeyS"]) game.input.down += deltaTime;
 
-    game.input.rotate =
-        keys["ArrowUp"] || keys["KeyW"];
-    
-    game.input.drop = keys["Space"];
+
+    if (keys["ArrowUp"] || keys["KeyW"]) game.input.rotate += deltaTime;
+
+    if (keys["Space"]) game.input.drop += deltaTime;
+
+
+    //Delete input
+    if (!keys["ArrowLeft"] && !keys["KeyA"]) game.input.left = 0;
+    if (!keys["ArrowRight"] && !keys["KeyD"]) game.input.right = 0;
+    if (!keys["ArrowDown"] && !keys["KeyS"]) game.input.down = 0;
+
+
+    if (!keys["ArrowUp"] && !keys["KeyW"]) game.input.rotate = 0;
+
+    if (!keys["Space"]) game.input.drop = 0;
+
 };
 
-function saveInput(game) {
-    game.input.sLeft = game.input.left;
-    game.input.sRight = game.input.right;
-    game.input.sDown = game.input.down;
-    game.input.sRotate = game.input.rotate;
-}
 
-function deleteSavedInput(game) {
-    game.input.sLeft = false;
-    game.input.sRight = false;
-    game.input.sDown = false;
-    game.input.sRotate = false;
-}
+
+
 

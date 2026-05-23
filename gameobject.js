@@ -4,7 +4,10 @@ const game = {
         COLUMNS : 10,
         ROWS : 14,
         CELL_SIZE : 80,
-        DIFFICULTY : 1
+        DIFFICULTY : 1,
+        MOVE_STEP : 75,
+        GRAVITY_STEP : 750,
+        FPS : 30
     },
 
     state : {
@@ -12,6 +15,7 @@ const game = {
         score : 0,
         canvas : null,
         canvasCtx : null,
+        
     },
 
     activePiece : {
@@ -24,20 +28,17 @@ const game = {
 
     },
 
-    //! Input should be reworked
+    //Input is tracked in ms pressed
     input : {
-        leftPressed : false,
-        leftHeld : false,
+        left : 0,
 
-        rightPressed : false,
-        rightHeld : false,
+        right : 0,
 
-        downPressed : false,
-        downHeld : false,
+        down : 0,
 
-        rotatePressed : false,
+        rotate : 0,
 
-        drop : false
+        drop : 0
     }
 
 };
