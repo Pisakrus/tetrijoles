@@ -2,11 +2,11 @@ const game = {
 
     config : {
         COLUMNS : 10,
-        ROWS : 14,
-        CELL_SIZE : 80,
+        ROWS : 16,
+        CELL_SIZE : 70,
         DIFFICULTY : 1,
-        MOVE_BUFFER : 100,
-        MOVE_STEP : 75,
+        MOVE_BUFFER : 120,
+        MOVE_STEP : 85,
         GRAVITY_STEP : 750,
         FPS : 30
     },
