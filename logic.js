@@ -145,17 +145,7 @@ function canMove(game, dx, dy) {
 };
 
 
-function move(game) {
-    const left = game.input.left;
-    const right = game.input.right;
-    const down = game.input.down;
-
-    let dx = 0;
-    let dy = 0;
-
-    if (right) dx += 1;
-    else if (left) dx -= 1;
-    if (down) dy += 1;
+function move(game, dx, dy) {
 
     if (canMove(game, dx, dy)) {
         game.activePiece.x += dx;
@@ -281,7 +271,7 @@ function updateGhostPiece(game) {
 
 function hardDrop(game) {
     game.activePiece.y = getGhostY(game);
-    
+
     placePiece(game);
     createPiece(game);
 }

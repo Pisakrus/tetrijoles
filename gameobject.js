@@ -5,6 +5,7 @@ const game = {
         ROWS : 14,
         CELL_SIZE : 80,
         DIFFICULTY : 1,
+        MOVE_BUFFER : 100,
         MOVE_STEP : 75,
         GRAVITY_STEP : 750,
         FPS : 30
@@ -15,7 +16,7 @@ const game = {
         score : 0,
         canvas : null,
         canvasCtx : null,
-        
+
     },
 
     activePiece : {

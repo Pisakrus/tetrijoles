@@ -10,6 +10,7 @@ drawCanvasPiece(game);
 let LastTime = 0;
 
 let moveTimer = 0;
+const MOVE_BUFFER = game.config.MOVE_BUFFER; // Creates a difference beetween an instant action and a continous action
 const MOVE_STEP = game.config.MOVE_STEP;
 
 let gravityTimer = 0;
@@ -29,37 +30,51 @@ function gameLoop(timestamp) {
     let deltaTime = game.state.deltaTime;
 
     frameTimer += deltaTime;
-    moveTimer += deltaTime;
     gravityTimer += deltaTime;
 
-    updateInput(game);
+    updateInput(game); // Add deltaTime to input if key is pressed
     
-    if (game.input.rotate == deltaTime) rotate(game);
-    if (game.input.drop == deltaTime) hardDrop(game);
+    //Check instant presses
+    if (game.input.rotate == deltaTime && deltaTime != 0) rotate(game);
+    if (game.input.drop == deltaTime && deltaTime != 0) hardDrop(game);
 
-    if (moveTimer >= MOVE_STEP) {
-        move(game);
-        updateGhostPiece(game);
-        clearRows(game);
+    if (game.input.left == deltaTime && deltaTime != 0) move(game, -1, 0);
+    if (game.input.right == deltaTime && deltaTime != 0) move(game, 1, 0);
+    if (game.input.down == deltaTime && deltaTime != 0) move(game, 0, 1);
+
+    maxDirection = Math.max(game.input.left, game.input.right, game.input.down);
+
+    if (maxDirection < moveTimer + MOVE_STEP) moveTimer = maxDirection;
+    else moveTimer += deltaTime;
+
+    // Check continous presses
+    if (moveTimer >= MOVE_STEP && maxDirection >= MOVE_BUFFER) {
+        if (game.input.left) move(game, -1, 0);
+        if (game.input.right) move(game, 1, 0);
+        if (game.input.down) move(game, 0, 1);    
         moveTimer -= MOVE_STEP;
-    };
+    }
+
     while (frameTimer >= STEP) {
 
         drawCanvasBoard(game);
+        updateGhostPiece(game);
         drawCanvasGhost(game);
         drawCanvasPiece(game);
 
         frameTimer -= STEP;
-    };
+    }
+
     while (gravityTimer >= GRAVITY_STEP) {
         gravity(game);
-        clearRows(game);
         gravityTimer -= GRAVITY_STEP;
-    };
+    }
+
+    clearRows(game);
 
     LastTime = timestamp;
 
     requestAnimationFrame(gameLoop);
-};
+}
 
 requestAnimationFrame(gameLoop);
