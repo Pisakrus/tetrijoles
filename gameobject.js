@@ -40,6 +40,12 @@ const game = {
         rotate : 0,
 
         drop : 0
+    },
+
+    assets : {
+        BEANS_SOURCE : ["images/red-beans.jpg"],
+        BEANS : [],
+        dryFartSound : new Audio("sounds/dry-fart.mp3")
     }
 
 };

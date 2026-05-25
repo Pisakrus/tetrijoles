@@ -1,9 +1,13 @@
-createBoard(game);
-createPiece(game, 1);
+async function loadGame() {
 
-createCanvas(game);
-drawCanvasBoard(game);
-drawCanvasPiece(game);
+    await loadBeansTextures(game);
+    createBoard(game);
+    createPiece(game, 1);
+    createCanvas(game);
+    drawCanvasBoard(game);
+    drawCanvasPiece(game);
+}
+
 
 //---Game loop---
 
@@ -61,6 +65,7 @@ function gameLoop(timestamp) {
         updateGhostPiece(game);
         drawCanvasGhost(game);
         drawCanvasPiece(game);
+        drawCanvasCellBean(game, 6, 6); // Test
 
         frameTimer -= STEP;
     }
@@ -77,4 +82,10 @@ function gameLoop(timestamp) {
     requestAnimationFrame(gameLoop);
 }
 
-requestAnimationFrame(gameLoop);
+async function start() {
+
+    await loadGame();
+    requestAnimationFrame(gameLoop);
+}
+
+start();

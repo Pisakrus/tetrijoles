@@ -41,11 +41,41 @@ function drawGridLines(game) {
 
 const COLORS = ["red", "lime", "cyan", "orange", "pink"];
 
+function loadBeansTextures(game) {
+    const BEANS_SOURCE = game.assets.BEANS_SOURCE;
 
-function drawCanvasCell(game, x, y, color="white") { //White color in case something goes wrong
+    BEANS = BEANS_SOURCE.map(src => {
+                const img = new Image();
+                img.src = src;
+                return img;
+                })
+
+    game.assets.BEANS = BEANS;
+}
+
+
+function drawCanvasCellBean(game, x, y) {
 
     const ctx = game.state.canvasCtx;
-    const  CELL_SIZE = game.config.CELL_SIZE;
+    const CELL_SIZE = game.config.CELL_SIZE;
+    const beanTexture = game.assets.BEANS[0];
+
+    ctx.drawImage(beanTexture,
+                 beanTexture.width / 2, // top left corner of cropped image
+                 beanTexture.height / 2,
+                 250,
+                 250,
+                 CELL_SIZE * x + 1.5, // Where to draw image
+                 CELL_SIZE * y + 1.5,
+                 CELL_SIZE - 2.5, // How big the image is drawn 
+                 CELL_SIZE - 2.5);
+}
+
+
+function drawCanvasCellColor(game, x, y, color="white") { //White color in case something goes wrong
+
+    const ctx = game.state.canvasCtx;
+    const CELL_SIZE = game.config.CELL_SIZE;
     const previousColor = ctx.fillStyle;
 
     ctx.fillStyle = color;
@@ -65,7 +95,7 @@ function drawCanvasPiece(game) {
     for(let block of blockMap) {
         let x = ox + block.x;
         let y = oy + block.y;
-        drawCanvasCell(game, x, y, COLORS[shapeId]);
+        drawCanvasCellColor(game, x, y, COLORS[shapeId]);
     };
 
 };
@@ -78,7 +108,7 @@ function drawCanvasGhost(game) {
 
     ctx.globalAlpha = 0.3;
     for (block of ghostPiece) {
-        drawCanvasCell(game, block.x, block.y, COLORS[shapeId]);
+        drawCanvasCellColor(game, block.x, block.y, COLORS[shapeId]);
     }
     ctx.globalAlpha = 1;
 }   
@@ -96,7 +126,7 @@ function drawCanvasBoard(game) {
 
             const cellValue = game.state.board[y][x];
             if (cellValue !== 0) {
-                drawCanvasCell(game, x, y, COLORS[cellValue - 1]); // Assumes colors index starts at 0
+                drawCanvasCellColor(game, x, y, COLORS[cellValue - 1]); // Assumes colors index starts at 0
             };
 
         };

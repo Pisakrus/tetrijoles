@@ -35,12 +35,13 @@ function clearRows(game) {
     const COLUMNS = game.config.COLUMNS;
     const board = game.state.board;
     const toClear = rowsToClear(game);
+    const dryFartSound = game.assets.dryFartSound;
 
     for (let i of toClear) {
         board.splice(i, 1); // Delete row
         board.unshift(new Array(COLUMNS).fill(0)); // Create new row at the top
-        const fartSound = new Audio("sounds/dry-fart.mp3");
-        fartSound.play().catch(console.error);
+        
+        dryFartSound.play().catch(console.error);
     };
 };  
 
