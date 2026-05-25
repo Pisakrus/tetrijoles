@@ -39,7 +39,7 @@ function drawGridLines(game) {
     ctx.globalAlpha = 1;
 };
 
-const COLORS = ["red", "lime", "cyan", "orange", "pink"];
+const COLORS = ["red", "lime", "black", "orange", "pink"];
 
 function loadBeansTextures(game) {
     const BEANS_SOURCE = game.assets.BEANS_SOURCE;
@@ -54,21 +54,40 @@ function loadBeansTextures(game) {
 }
 
 
-function drawCanvasCellBean(game, x, y) {
+function drawCanvasCellBean(game, x, y, colorId) {
 
     const ctx = game.state.canvasCtx;
     const CELL_SIZE = game.config.CELL_SIZE;
-    const beanTexture = game.assets.BEANS[0];
+    const beanTexture = game.assets.BEANS[colorId];
 
-    ctx.drawImage(beanTexture,
-                 beanTexture.width / 2, // top left corner of cropped image
-                 beanTexture.height / 2,
-                 250,
-                 250,
-                 CELL_SIZE * x + 1.5, // Where to draw image
-                 CELL_SIZE * y + 1.5,
-                 CELL_SIZE - 2.5, // How big the image is drawn 
-                 CELL_SIZE - 2.5);
+
+    function drawResizedBean(sx, sy, sw, sh) {
+        ctx.drawImage(beanTexture,
+                          sx, // top left corner of cropped image
+                          sy,
+                          sw,
+                          sh,
+                          CELL_SIZE * x + 1.5, // Where to draw image
+                          CELL_SIZE * y + 1.5,
+                          CELL_SIZE - 2.5, // How big the image is drawn 
+                          CELL_SIZE - 2.5);
+    }
+
+    switch (colorId) {
+        case 0 : // Case Red
+            drawResizedBean(100, 100, 400, 400);
+            break;
+
+        case 1 : // Case Green
+            drawResizedBean(100, 100, 600, 600);
+            break;
+        case 2 : // Case Black
+            drawResizedBean(100, 100, 125, 125)
+            break;
+        case 3 : // Case Yellow
+            drawResizedBean(50, 50, 300, 300)
+            break;
+    }
 }
 
 
@@ -95,7 +114,7 @@ function drawCanvasPiece(game) {
     for(let block of blockMap) {
         let x = ox + block.x;
         let y = oy + block.y;
-        drawCanvasCellColor(game, x, y, COLORS[shapeId]);
+        drawCanvasCellBean(game, x, y, shapeId);
     };
 
 };
@@ -126,7 +145,7 @@ function drawCanvasBoard(game) {
 
             const cellValue = game.state.board[y][x];
             if (cellValue !== 0) {
-                drawCanvasCellColor(game, x, y, COLORS[cellValue - 1]); // Assumes colors index starts at 0
+                drawCanvasCellBean(game, x, y, cellValue - 1);
             };
 
         };

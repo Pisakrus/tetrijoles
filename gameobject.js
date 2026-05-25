@@ -3,7 +3,7 @@ const game = {
     config : {
         COLUMNS : 10,
         ROWS : 16,
-        CELL_SIZE : 70,
+        CELL_SIZE : 65,
         DIFFICULTY : 1,
         MOVE_BUFFER : 120,
         MOVE_STEP : 85,
@@ -43,7 +43,7 @@ const game = {
     },
 
     assets : {
-        BEANS_SOURCE : ["images/red-beans.jpg"],
+        BEANS_SOURCE : ["images/red-beans.jpg", "images/green-peas.jpg", "images/black-beans.jpg", "images/tomato-beans.jpg"],
         BEANS : [],
         dryFartSound : new Audio("sounds/dry-fart.mp3")
     }

@@ -1,6 +1,7 @@
 async function loadGame() {
 
     await loadBeansTextures(game);
+    console.log("assets: ", game.assets)
     createBoard(game);
     createPiece(game, 1);
     createCanvas(game);
