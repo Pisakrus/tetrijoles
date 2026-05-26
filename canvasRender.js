@@ -16,8 +16,8 @@ function drawGridLines(game) {
     const ctx = game.state.canvasCtx;
 
     ctx.strokeStyle = "black";
-    ctx.lineWidth = 2;
-    ctx.globalAlpha = 0.4;
+    ctx.lineWidth = 3;
+    ctx.globalAlpha = 0.5;
 
     // Vertical lines
     for (let i = CELL_SIZE; i < canvas.width; i+=CELL_SIZE) {
@@ -67,24 +67,24 @@ function drawCanvasCellBean(game, x, y, colorId) {
                           sy,
                           sw,
                           sh,
-                          CELL_SIZE * x + 1.5, // Where to draw image
-                          CELL_SIZE * y + 1.5,
-                          CELL_SIZE - 2.5, // How big the image is drawn 
-                          CELL_SIZE - 2.5);
+                          CELL_SIZE * x + 3, // Where to draw image
+                          CELL_SIZE * y + 3,
+                          CELL_SIZE - 3, // How big the image is drawn 
+                          CELL_SIZE - 3);
     }
 
     switch (colorId) {
         case 0 : // Case Red
-            drawResizedBean(100, 100, 400, 400);
+            drawResizedBean(125, 125, 300, 300);
             break;
 
         case 1 : // Case Green
             drawResizedBean(100, 100, 600, 600);
             break;
         case 2 : // Case Black
-            drawResizedBean(100, 100, 125, 125)
+            drawResizedBean(0, 0, 425, 425)
             break;
-        case 3 : // Case Yellow
+        case 3 : // Case Orange
             drawResizedBean(50, 50, 300, 300)
             break;
     }
@@ -98,12 +98,17 @@ function drawCanvasCellColor(game, x, y, color="white") { //White color in case 
     const previousColor = ctx.fillStyle;
 
     ctx.fillStyle = color;
-    ctx.fillRect(CELL_SIZE * x + 1.5,
-                 CELL_SIZE * y + 1.5,
-                 CELL_SIZE - 2.5,
-                 CELL_SIZE - 2.5);
+    ctx.fillRect(CELL_SIZE * x + 3,
+                 CELL_SIZE * y + 3,
+                 CELL_SIZE - 3,
+                 CELL_SIZE - 3);
     ctx.fillStyle = previousColor;
 };
+
+function drawCell(game, x, y, shapeId, isBean=true) {
+    if (isBean) drawCanvasCellBean(game, x, y, shapeId);
+    else drawCanvasCellColor(game, x, y, COLORS[shapeId]);
+}
 
 function drawCanvasPiece(game) {
     const blockMap = game.activePiece.blockMap;
@@ -114,7 +119,7 @@ function drawCanvasPiece(game) {
     for(let block of blockMap) {
         let x = ox + block.x;
         let y = oy + block.y;
-        drawCanvasCellBean(game, x, y, shapeId);
+        drawCell(game, x, y, shapeId);
     };
 
 };
@@ -127,7 +132,7 @@ function drawCanvasGhost(game) {
 
     ctx.globalAlpha = 0.3;
     for (block of ghostPiece) {
-        drawCanvasCellColor(game, block.x, block.y, COLORS[shapeId]);
+        drawCell(game, block.x, block.y, shapeId);
     }
     ctx.globalAlpha = 1;
 }   
@@ -145,7 +150,7 @@ function drawCanvasBoard(game) {
 
             const cellValue = game.state.board[y][x];
             if (cellValue !== 0) {
-                drawCanvasCellBean(game, x, y, cellValue - 1);
+                drawCell(game, x, y, cellValue - 1);
             };
 
         };
