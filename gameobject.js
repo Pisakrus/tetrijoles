@@ -43,7 +43,8 @@ const game = {
     },
 
     assets : {
-        BEANS_SOURCE : ["images/red-beans.jpg", "images/green-peas.jpg", "images/black-beans2.jpg", "images/tomato-beans.jpg"],
+        // O L T J I  
+        BEANS_SOURCE : ["images/red-beans.jpg", "images/green-peas.jpg", "images/black-beans.jpg", "images/tomato-beans.jpg", "images/chick-peas.jpg"],
         BEANS : [],
         dryFartSound : new Audio("sounds/dry-fart.mp3")
     }

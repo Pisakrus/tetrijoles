@@ -87,6 +87,8 @@ function drawCanvasCellBean(game, x, y, colorId) {
         case 3 : // Case Orange
             drawResizedBean(50, 50, 300, 300)
             break;
+        case 4 : // Case chick peas
+            drawResizedBean(250, 250, 330, 350)
     }
 }
 

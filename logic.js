@@ -49,7 +49,7 @@ function comboScore(nrows) {
     return nrows ** 2 * 10;
 };
 
-const SHAPES = ["O", "L", "T", "I"];
+const SHAPES = ["O", "L", "T", "I", "J"];
 
 
 const SHAPE_MAPS = {
@@ -81,7 +81,7 @@ const SHAPE_MAPS = {
           {x : 0, y : 1},
           {x : 1, y : 1}],
 
-     /*
+    /*
     1 1 1
     0 1 0
     0 0 0
@@ -102,6 +102,16 @@ const SHAPE_MAPS = {
            {x : 0, y : -1},
            {x : 0, y : -2},
            {x : 0, y : 1}],
+    
+    /* 
+    0 1 0
+    0 1 0
+    1 1 0
+    */
+    "J" : [{x : 0, y : 0},
+           {x : 0, y : -1},
+           {x : 0, y : 1},
+           {x : -1, y : 1}],
      
 };
 
