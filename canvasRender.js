@@ -2,9 +2,15 @@
 
 
 function createCanvas(game) {
+    const COLUMNS = game.config.COLUMNS;
+    const ROWS = game.config.ROWS;
+    const CELL_SIZE = game.config.CELL_SIZE;
+
     const canvas = document.getElementById("gameCanvas");
     const ctx = canvas.getContext("2d");
 
+    canvas.width = CELL_SIZE * COLUMNS;
+    canvas.height = CELL_SIZE * ROWS;
     game.state.canvas = canvas;
     game.state.canvasCtx = ctx;
 };
@@ -79,7 +85,7 @@ function drawCanvasCellBean(game, x, y, colorId) {
             break;
 
         case 1 : // Case Green
-            //drawResizedBean(0, 100, 650, 650);
+            // drawResizedBean(0, 100, 650, 650);
             drawResizedBean(100, 350, 650, 650);
             
             break;
@@ -134,7 +140,7 @@ function drawCanvasGhost(game) {
     const ghostPiece = game.activePiece.ghostPiece;
     const shapeId = game.activePiece.shapeId;
 
-    ctx.globalAlpha = 0.3;
+    ctx.globalAlpha = 0.35;
     for (block of ghostPiece) {
         drawCell(game, block.x, block.y, shapeId);
     }

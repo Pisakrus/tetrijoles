@@ -1,5 +1,7 @@
 // ---Tetris---
 
+
+// Remakes an empty new board
 function createBoard(game) {
     const ROWS = game.config.ROWS;
     const COLUMNS = game.config.COLUMNS;
@@ -45,9 +47,6 @@ function clearRows(game) {
     };
 };  
 
-function comboScore(nrows) {
-    return nrows ** 2 * 10;
-};
 
 const SHAPES = ["O", "L", "T", "I", "J"];
 
