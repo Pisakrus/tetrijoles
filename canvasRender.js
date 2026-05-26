@@ -67,19 +67,21 @@ function drawCanvasCellBean(game, x, y, colorId) {
                           sy,
                           sw,
                           sh,
-                          CELL_SIZE * x + 3, // Where to draw image
-                          CELL_SIZE * y + 3,
+                          CELL_SIZE * x + 2, // Where to draw image
+                          CELL_SIZE * y + 2,
                           CELL_SIZE - 3, // How big the image is drawn 
                           CELL_SIZE - 3);
     }
 
     switch (colorId) {
         case 0 : // Case Red
-            drawResizedBean(125, 125, 300, 300);
+            drawResizedBean(140, 125, 300, 300);
             break;
 
         case 1 : // Case Green
-            drawResizedBean(100, 100, 600, 600);
+            //drawResizedBean(0, 100, 650, 650);
+            drawResizedBean(100, 350, 650, 650);
+            
             break;
         case 2 : // Case Black
             drawResizedBean(0, 0, 425, 425)
