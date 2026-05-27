@@ -48,8 +48,8 @@ body {
 #gameCanvas {
     border: 2px solid wheat;
     box-shadow:
-        0 0 9px rgba(218, 165, 32, 0.7),
-        0 0 16px rgba(140, 90, 255, 0.25),
+        0 0 10px rgba(218, 165, 32, 0.7),
+        0 0 20px rgba(140, 90, 255, 0.4),
         0 0 40px rgba(140, 90, 255, 0.25),
         0 0 80px rgba(140, 90, 255, 0.1);
     border-radius: 10px;

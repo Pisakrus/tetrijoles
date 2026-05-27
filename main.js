@@ -29,6 +29,7 @@ const STEP = 1000 / FPS;
 
 
 function gameLoop(timestamp) {
+    if (game.state.gameIsOver) return; 
 
     if (!LastTime) LastTime = timestamp;
     game.state.deltaTime = timestamp - LastTime;
@@ -77,11 +78,14 @@ function gameLoop(timestamp) {
     }
 
     clearRows(game);
+    if (game.state.gameIsOver) gameOver(game);
+
 
     LastTime = timestamp;
 
     requestAnimationFrame(gameLoop);
 }
+
 
 async function start() {
 

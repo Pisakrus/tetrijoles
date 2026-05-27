@@ -18,6 +18,12 @@ function createBoard(game) {
     game.state.board = board;
 };
 
+function gameOver() {
+    game.state.IsRunning = false;
+    game.assets.youLostPayitoSound.play()
+    window.alert("You ate more beans than you could handle... GAME OVER");
+}
+
 // Check full rows and returns their index in a list.
 function rowsToClear(game) {
     const board = game.state.board; 
@@ -174,8 +180,12 @@ function placePiece(game) {
         let x = ox + block.x;
         let y = oy + block.y
 
+        if (y < 0) {
+            game.state.gameIsOver = true;
+            return;
+        }
         game.state.board[y][x] = shapeId + 1;
-    }
+    }   
 }
 
 
@@ -185,7 +195,7 @@ function gravity(game) {
     }
     else {
         placePiece(game);
-        createPiece(game); 
+        createPiece(game);
     }
 }
 
