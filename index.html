@@ -11,7 +11,9 @@
 </head>
 
 <body>
-    <div style="text-align: center;">
+
+    <div id="game-title">
+    
         <header>
             <h1 class="title">Tetrijoles</h1>
             <h2 class="title">A game of Tetris and Beans</h2>
@@ -19,15 +21,15 @@
 
         <img id="frijoles" src="images/frijoles-negros.png" alt="Frijoles">
         <img id="gitano" src="">
+    </div> 
+
+     <div class="canvas-container">
+        <canvas id="gameCanvas"></canvas>
+        
     </div>
-    <br>
-    <hr>
 
     <script src="gitano.js"></script>
 
-    <div class="canvas-container">
-        <canvas id="gameCanvas"></canvas>
-    </div>
 
     <script src="gameobject.js"></script>
     <script src="input.js"></script>

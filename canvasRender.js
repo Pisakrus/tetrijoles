@@ -45,12 +45,12 @@ function drawGridLines(game) {
     ctx.globalAlpha = 1;
 };
 
-const COLORS = ["red", "lime", "black", "orange", "pink"];
+const COLORS = ["red", "lime", "black", "orange", "pink", "brown", "white"];
 
 function loadBeansTextures(game) {
     const BEANS_SOURCE = game.assets.BEANS_SOURCE;
 
-    BEANS = BEANS_SOURCE.map(src => {
+    const BEANS = BEANS_SOURCE.map(src => {
                 const img = new Image();
                 img.src = src;
                 return img;

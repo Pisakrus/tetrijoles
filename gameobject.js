@@ -3,7 +3,7 @@ const game = {
     config : {
         COLUMNS : 10,
         ROWS : 16,
-        CELL_SIZE : 65,
+        CELL_SIZE : 50,
         DIFFICULTY : 1,
         MOVE_BUFFER : 120,
         MOVE_STEP : 85,
