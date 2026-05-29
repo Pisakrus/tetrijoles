@@ -8,6 +8,8 @@ const game = {
         MOVE_BUFFER : 120,
         MOVE_STEP : 85,
         GRAVITY_STEP : 750,
+        LOCK_DELAY : 400,
+        MAX_LOCK_RESETS : 10,
         FPS : 30
     },
 
@@ -24,6 +26,7 @@ const game = {
         x : 5,
         y : 3,
         rotation : 0,
+        movedThisFrame : false,
         shapeId : 0,
         blockMap : [],
         ghostPiece : []

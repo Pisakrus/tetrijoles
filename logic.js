@@ -162,6 +162,7 @@ function canMove(game, dx, dy) {
 
 
 function move(game, dx, dy) {
+    game.activePiece.movedThisFrame = true;
 
     if (canMove(game, dx, dy)) {
         game.activePiece.x += dx;
@@ -170,7 +171,7 @@ function move(game, dx, dy) {
 };
 
 
-function placePiece(game) {
+function lockPiece(game) {
     const ox = game.activePiece.x;
     const oy = game.activePiece.y;
     const shapeId = game.activePiece.shapeId;
@@ -189,19 +190,9 @@ function placePiece(game) {
 }
 
 
-function gravity(game) {
-    if (canMove(game, 0, 1)) {
-        game.activePiece.y += 1
-    }
-    else {
-        placePiece(game);
-        createPiece(game);
-    }
-}
-
-
 function rotate(game, rotations=1) {
     if (game.activePiece.shapeId === 0) return; 
+    game.activePiece.movedThisFrame = true;
 
     const blockMap = game.activePiece.blockMap;
     const originalBlockMap = blockMap.map(block => ({...block}));
@@ -292,7 +283,7 @@ function updateGhostPiece(game) {
 function hardDrop(game) {
     game.activePiece.y = getGhostY(game);
 
-    placePiece(game);
+    lockPiece(game);
     createPiece(game);
 }
 

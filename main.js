@@ -21,6 +21,12 @@ const MOVE_STEP = game.config.MOVE_STEP;
 let gravityTimer = 0;
 const GRAVITY_STEP = game.config.GRAVITY_STEP;
 
+let lockDelayTimer = 0;
+const LOCK_DELAY = game.config.LOCK_DELAY;
+let lockResetCounter = 0
+const MAX_LOCK_RESETS = game.config.MAX_LOCK_RESETS;
+
+
 // Render at 30 FPS
 let frameTimer = 0;
 const FPS = game.config.FPS;
@@ -35,6 +41,8 @@ function gameLoop(timestamp) {
     game.state.deltaTime = timestamp - LastTime;
     let deltaTime = game.state.deltaTime;
 
+    game.activePiece.movedThisFrame = false; // move and rotate make this true
+    if (game.activePiece.grounded) lockDelayTimer += deltaTime;
     frameTimer += deltaTime;
     gravityTimer += deltaTime;
 
@@ -61,23 +69,44 @@ function gameLoop(timestamp) {
         moveTimer -= MOVE_STEP;
     }
 
+
+    // Updates grounded state
+    if (canMove(game, 0, 1)) game.activePiece.grounded = false;
+    else game.activePiece.grounded = true;
+
+    if (gravityTimer >= GRAVITY_STEP) {
+        if (!game.activePiece.grounded) game.activePiece.y += 1;
+        gravityTimer -= GRAVITY_STEP;
+    }
+
+    // Resets lockDelayTimer if any movement is done. 
+    if (game.activePiece.grounded && game.activePiece.movedThisFrame && lockResetCounter <= MAX_LOCK_RESETS) {
+        lockDelayTimer = 0;
+        lockResetCounter += 1;
+    }
+
+    // Lock Piece
+    if (lockDelayTimer >= LOCK_DELAY) {
+        console.log("Piece placed at: ", timestamp)
+        lockPiece(game);
+        createPiece(game);
+        lockDelayTimer = 0;
+        lockResetCounter = 0;
+    }
+
+    clearRows(game);
+
+    // Render Everything
     while (frameTimer >= STEP) {
 
         drawCanvasBoard(game);
         updateGhostPiece(game);
         drawCanvasGhost(game);
         drawCanvasPiece(game);
-        drawCanvasCellBean(game, 6, 6); // Test
 
         frameTimer -= STEP;
     }
 
-    while (gravityTimer >= GRAVITY_STEP) {
-        gravity(game);
-        gravityTimer -= GRAVITY_STEP;
-    }
-
-    clearRows(game);
     if (game.state.gameIsOver) gameOver(game);
 
 
