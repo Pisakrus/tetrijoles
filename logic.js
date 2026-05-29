@@ -54,7 +54,7 @@ function clearRows(game) {
 };  
 
 
-const SHAPES = ["O", "L", "T", "I", "J"];
+const SHAPES = ["O", "L", "T", "I", "J", "Z"];
 
 
 const SHAPE_MAPS = {
@@ -63,9 +63,9 @@ const SHAPE_MAPS = {
     // Priority is top to bottom (negative to positive) and left to right (negative to positive).
 
     "EMPTY" :[{x : 0, y : 0},
-             {x : 0, y : 0},
-             {x : 0, y : 0},
-             {x : 0, y : 0}],
+              {x : 0, y : 0},
+              {x : 0, y : 0},
+              {x : 0, y : 0}],
     /*
     0 0 0
     0 1 1
@@ -117,6 +117,14 @@ const SHAPE_MAPS = {
            {x : 0, y : -1},
            {x : 0, y : 1},
            {x : -1, y : 1}],
+    /* 
+    1 1 0
+    0 1 1
+    */
+    "Z" : [{x : 0, y : 0},
+           {x : 0, y : 1},
+           {x : -1, y : 0},
+           {x : 1, y : 1}],
      
 };
 
