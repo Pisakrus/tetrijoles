@@ -54,7 +54,7 @@ function clearRows(game) {
 };  
 
 
-const SHAPES = ["O", "L", "T", "I", "J", "Z"];
+const SHAPES = ["O", "L", "T", "I", "J", "Z", "S"];
 
 
 const SHAPE_MAPS = {
@@ -125,7 +125,15 @@ const SHAPE_MAPS = {
            {x : 0, y : 1},
            {x : -1, y : 0},
            {x : 1, y : 1}],
-     
+    /* 
+    0 1 1
+    1 1 0
+    */
+    "S" : [{x : 0, y : 0},
+           {x : 0, y : 1},
+           {x : 1, y : 0},
+           {x : -1, y : 1}],
+    
 };
 
 function createRandomShapeId() {

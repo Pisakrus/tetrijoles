@@ -81,18 +81,18 @@ function drawCanvasCellBean(game, x, y, colorId) {
 
     switch (colorId) {
         case 0 : // Case Red
+            ctx.filter = "brightness(0.9) sepia(0.15) contrast(0.95)";
             drawResizedBean(140, 125, 300, 300);
+            ctx.filter = "none";
             break;
-
-        case 1 : // Case Green
+        case 1 : // Case green peas
             // drawResizedBean(0, 100, 650, 650);
-            drawResizedBean(100, 350, 650, 650);
-            
+            drawResizedBean(100, 350, 650, 650);  
             break;
-        case 2 : // Case Black
+        case 2 : // Case black beans
             drawResizedBean(50, 40, 500, 500)
             break;
-        case 3 : // Case Orange
+        case 3 : // Case fabada
             drawResizedBean(50, 50, 300, 300)
             break;
         case 4 : // Case chick peas
@@ -102,6 +102,11 @@ function drawCanvasCellBean(game, x, y, colorId) {
             ctx.filter = "brightness(0.9) contrast(1.35)";
             drawResizedBean(235, 250, 90, 90)
             ctx.filter = "none";
+            break;
+        case 6 : // Case pinto beans
+        ctx.filter = "contrast(1.2)"
+            drawResizedBean(120, 130, 160, 160)
+            break;
     }
 }
 

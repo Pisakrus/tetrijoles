@@ -8,7 +8,7 @@ const game = {
         MOVE_BUFFER : 120,
         MOVE_STEP : 85,
         GRAVITY_STEP : 750,
-        LOCK_DELAY : 400,
+        LOCK_DELAY : 500,
         MAX_LOCK_RESETS : 10,
         FPS : 30
     },
@@ -48,7 +48,14 @@ const game = {
 
     assets : {
         // O L T J I Z
-        BEANS_SOURCE : ["images/red-beans.jpg", "images/green-peas.jpg", "images/black-beans.jpg", "images/tomato-beans.jpg", "images/chick-peas.jpg", "images/lentils.png"],
+        BEANS_SOURCE : ["images/red-beans.jpg",
+                        "images/green-peas.jpg",
+                        "images/black-beans.jpg", 
+                        "images/tomato-beans.jpg", 
+                        "images/chick-peas.jpg", 
+                        "images/lentils.png",
+                        "images/pinto-beans.jpg"],
+                        
         BEANS : [],
         dryFartSound : new Audio("sounds/dry-fart.mp3"),
         youLostPayitoSound : new Audio("sounds/you-lost-payito.mp3")
