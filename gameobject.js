@@ -10,7 +10,7 @@ const game = {
         GRAVITY_STEP : 750,
         LOCK_DELAY : 500,
         MAX_LOCK_RESETS : 10,
-        FPS : 30
+        FPS : 60
     },
 
     state : {

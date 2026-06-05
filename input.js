@@ -2,8 +2,10 @@ const keys = {};
 
 // Prevents keys from scrolling the page
 const blockedKeys = [
-  "ArrowUp",
-  "ArrowDown"  
+    "ArrowLeft",
+    "ArrowRight",
+    "ArrowUp",
+    "ArrowDown"
 ];
 
 

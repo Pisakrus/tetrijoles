@@ -13,32 +13,50 @@
 
 <body>
 
-    <div id="game-title">
-    
-        <header>
+<div class="layout">
+
+    <!-- LEFT COLUMN (MENU) -->
+    <aside class="left-panel">
+        <header id="game-title">
             <h1 class="title">TETRIJOLES</h1>
             <h2>A game of Tetris and Beans</h2>
         </header>
 
         <img id="frijoles" src="images/frijoles-negros.png" alt="Frijoles">
         <img id="gitano" src="">
-    </div> 
+    </aside>
 
-     <div class="canvas-container">
-        <canvas id="gameCanvas"></canvas>
-        
-    </div>
+    <!-- CENTER COLUMN (GAME) -->
+    <main class="center-panel">
+            <canvas id="gameCanvas"></canvas>
+    </main>
 
-    <script src="menu.js"></script>
+    <!-- RIGHT COLUMN (HUD / UI) -->
+    <aside class="right-panel">
+            <canvas id="nextPieceCanvas" width="500" height="150"></canvas>
+                
+        <div id="statsDisplay">
+            <div class="hud-item">
+            <span>Score</span>
+            <span id="scoreDisplay">000000</span>
+            </div>
 
+            <div class="hud-item">
+                <span>Time</span>
+                <span id="timeDisplay">00:00</span>
+            </div>
+        </div>
+    </aside>
 
-    <script src="gameobject.js"></script>
-    <script src="input.js"></script>
-    <script src="logic.js"></script>
-    <script src="domRender.js"></script>
-    <script src="canvasRender.js"></script>
-    <script src="main.js"></script>
-    <script src="menu.js"></script>
+</div>
+
+<script src="menu.js"></script>
+<script src="gameobject.js"></script>
+<script src="input.js"></script>
+<script src="logic.js"></script>
+<script src="domRender.js"></script>
+<script src="canvasRender.js"></script>
+<script src="main.js"></script>
 
 </body>
 </html>

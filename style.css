@@ -1,26 +1,36 @@
 body {
     margin: 0;
     height: 100vh;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-
     background: linear-gradient(to top, #1a1a1a, #0a0a0a, #000000);
-
     color: white;
-    text-align: center;
-    font-family: monospace;
+    font-family: 'Press Start 2P';
+    font-size: 15px;
 }
 
+/* MAIN LAYOUT */
+.layout {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
 
+    width: 100vw;
+    height: 100vh;
+
+    align-items: center;
+}
+
+/* LEFT PANEL */
+.left-panel {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+/* TITLE */
 #game-title {
-    font-family: 'Press Start 2P';
     font-size: 12px;
-    color: white;
-    position: absolute;
-    left: 125px;  
-    top: 50%;
-    transform: translateY(-50%);
+    text-align: center;
 }
 
 .title {
@@ -28,22 +38,16 @@ body {
     font-size: 30px;
     color: goldenrod;
     text-shadow: 0 0 18px rgba(140, 90, 255, 0.75);
-
 }
 
-#frijoles {
-    cursor: pointer;
-}
-
-#gitano {
-    cursor: pointer;
-}
-
-.canvas-container {
+/* CENTER PANEL */
+.center-panel {
     display: flex;
     justify-content: center;
     align-items: center;
 }
+
+
 
 #gameCanvas {
     border: 2px solid wheat;
@@ -53,5 +57,32 @@ body {
         0 0 40px rgba(140, 90, 255, 0.25),
         0 0 80px rgba(140, 90, 255, 0.1);
     border-radius: 10px;
-    background: radial-gradient(circle at bottom,#2b1b50, darkblue);
+    background: radial-gradient(circle at bottom, #2b1b50, darkblue);
 }
+
+/* RIGHT PANEL (HUD) */
+.right-panel {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around; 
+    align-items: center;
+
+    height: 100vh;
+}
+
+#nextPieceCanvas {
+    border: 10px solid #2b1b50;
+
+}
+
+#statsDisplay {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 80px;
+}
+
+.hud-item {
+    font-size: 20px;
+}
+
