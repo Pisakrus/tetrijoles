@@ -7,6 +7,31 @@ body {
     font-size: 15px;
 }
 
+button {
+    font-family: 'Press Start 2P', cursive;
+    color : black;
+    text-shadow: 1px 1px gray;
+    font-size: 17px;
+    padding: 15px 18px;
+    margin: 10px 0;
+    width: 40%;
+    background: linear-gradient(to left, goldenrod, peru);
+    border-color: darkslateblue;
+    border-width: 7px;
+}
+button:hover {
+    filter: brightness(1.1);
+    cursor: pointer;
+    box-shadow: 0 0 10px darkslateblue;
+}
+button:active {
+    filter: brightness(1.4);
+    transform: translateY(3.5px);
+    box-shadow: 0 0 20px darkslateblue;
+    
+}
+
+
 /* MAIN LAYOUT */
 .layout {
     display: grid;
