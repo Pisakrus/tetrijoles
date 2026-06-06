@@ -16,8 +16,10 @@ const game = {
     state : {
         board : [],
         score : 0,
-        pause : false,
+        paused : false,
+        restarting : false,
         gameIsOver : false,
+        gameOverAlreadyShown : false,
         canvas : null,
         canvasCtx : null,
 
@@ -45,6 +47,15 @@ const game = {
         rotate : 0,
 
         drop : 0
+    },
+
+    ui : {
+        pauseButton : document.getElementById("pauseButton"),
+        pauseLabel : pauseButton.querySelector(".label"),
+        pauseIcon : pauseButton.querySelector(".icon"),
+
+        restartButton : document.getElementById("restartButton")
+
     },
 
     assets : {

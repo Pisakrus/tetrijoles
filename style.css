@@ -5,6 +5,7 @@ body {
     color: white;
     font-family: 'Press Start 2P';
     font-size: 15px;
+    text-shadow: 1.5px 1.5px darkslateblue;
 }
 
 button {
@@ -12,14 +13,14 @@ button {
 
     font-family: 'Press Start 2P', cursive;
     color : black;
-    text-shadow: 1px 1px gray;
+    text-shadow: 1px 1px darkgray;
     font-size: 15px;
     padding: 15px 18px;
     margin: 10px 0;
     width: 45%;
     background: linear-gradient(to left, goldenrod, peru);
     border-color: darkslateblue;
-    border-width: 7px;
+    border-width: 8px;
 
     
 }
@@ -27,11 +28,13 @@ button:hover {
     filter: brightness(1.15);
     cursor: pointer;
     box-shadow: 0 0 10px darkslateblue;
+    text-shadow: 1px 1px pink;
 }
 button:active {
     filter: brightness(1.4);
     transform: translateY(3.5px);
     box-shadow: 0 0 20px darkslateblue;
+    text-shadow: 1px 1px plum;
     
 }
 

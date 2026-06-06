@@ -18,11 +18,6 @@ function createBoard(game) {
     game.state.board = board;
 };
 
-function gameOver() {
-    game.state.IsRunning = false;
-    game.assets.youLostPayitoSound.play()
-    window.alert("You ate more beans than you could handle... GAME OVER");
-}
 
 // Check full rows and returns their index in a list.
 function rowsToClear(game) {

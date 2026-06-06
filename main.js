@@ -35,7 +35,41 @@ const STEP = 1000 / FPS;
 
 
 function gameLoop(timestamp) {
-    if (game.state.gameIsOver) return; 
+
+
+    if (game.state.restarting) {
+        game.state.score = 0;
+        createBoard(game);
+        createPiece(game);
+        moveTimer = 0;
+        gravityTimer = 0;
+        lockDelayTimer = 0;
+        lockResetCounter = 0;
+        frameTimer = 0;
+        game.state.restarting = false;
+        game.state.paused = false;
+        game.state.gameIsOver = false;
+        game.state.gameOverAlreadyShown = false;
+    }
+    
+    if (game.state.paused) {
+        LastTime = timestamp;
+        requestAnimationFrame(gameLoop);
+        return;
+    }
+
+    if (game.state.gameIsOver) {
+
+        if (!game.state.gameOverAlreadyShown) {
+            game.assets.youLostPayitoSound.play()
+            window.alert("You ate more beans than you could handle... GAME OVER");
+            game.state.gameOverAlreadyShown = true;
+        }
+
+        LastTime = timestamp;
+        requestAnimationFrame(gameLoop);
+        return;
+    } 
 
     if (!LastTime) LastTime = timestamp;
     game.state.deltaTime = timestamp - LastTime;
@@ -97,7 +131,7 @@ function gameLoop(timestamp) {
     clearRows(game);
 
     // Render Everything
-    while (frameTimer >= STEP) {
+    if (frameTimer >= STEP) {
 
         drawCanvasBoard(game);
         updateGhostPiece(game);
@@ -106,8 +140,6 @@ function gameLoop(timestamp) {
 
         frameTimer -= STEP;
     }
-
-    if (game.state.gameIsOver) gameOver(game);
 
 
     LastTime = timestamp;

@@ -1,15 +1,20 @@
-const pauseButton = document.getElementById("pauseButton");
-const pauseLabel = pauseButton.querySelector(".label");
-const pauseIcon = pauseButton.querySelector(".icon");
+// Pause button
 
-pauseButton.onclick = () => {
-    if (game.state.pause) {
-        pauseLabel.textContent = "Pause Game";
-        pauseIcon.textContent = "⏸";
-        game.state.pause = false;
+function pauseGame(game) {
+    if (game.state.paused) {
+        game.ui.pauseLabel.textContent = "Pause Game";
+        game.ui.pauseIcon.textContent = "⏸";
+        game.state.paused = false;
     } else {
-        pauseLabel.textContent = "Resume Game";
-        pauseIcon.textContent = "▶";
-        game.state.pause = true;
+        game.ui.pauseLabel.textContent = "Resume Game";
+        game.ui.pauseIcon.textContent = "▶";
+        game.state.paused = true;
     }
-};
+}
+
+game.ui.pauseButton.onclick = () => pauseGame(game);
+
+
+game.ui.restartButton.onclick = () => {
+    game.state.restarting = true;
+}
