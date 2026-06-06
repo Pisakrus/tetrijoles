@@ -8,19 +8,23 @@ body {
 }
 
 button {
+    outline: none;
+
     font-family: 'Press Start 2P', cursive;
     color : black;
     text-shadow: 1px 1px gray;
-    font-size: 17px;
+    font-size: 15px;
     padding: 15px 18px;
     margin: 10px 0;
-    width: 40%;
+    width: 45%;
     background: linear-gradient(to left, goldenrod, peru);
     border-color: darkslateblue;
     border-width: 7px;
+
+    
 }
 button:hover {
-    filter: brightness(1.1);
+    filter: brightness(1.15);
     cursor: pointer;
     box-shadow: 0 0 10px darkslateblue;
 }
@@ -30,6 +34,13 @@ button:active {
     box-shadow: 0 0 20px darkslateblue;
     
 }
+
+.icon {
+    font-size : 20px;
+    line-height: 15px;
+
+}
+
 
 
 /* MAIN LAYOUT */
@@ -62,7 +73,9 @@ button:active {
     font-family: 'Press Start 2P', cursive;
     font-size: 30px;
     color: goldenrod;
-    text-shadow: 0 0 18px rgba(140, 90, 255, 0.75);
+    text-shadow: 
+                0 0 20px rgba(140, 90, 255, 0.75),
+                2px 2px darkblue
 }
 
 /* CENTER PANEL */

@@ -27,8 +27,14 @@
 
         <br>
 
-        <button type="button">Pause Game</button>
-        <button type="button">Restart Game</button>
+        <button id="pauseButton" type="button" tabindex="-1">
+            <span class="label">Pause Game</span>
+            <span class="icon">⏸</span>
+        </button>
+        <button id="restartButton" type="button" tabindex="-1">
+            <span class="label">Restart Game</span>
+            <span class="icon">🗘</span>
+        </button>
     </aside>
 
     <!-- CENTER COLUMN (GAME) -->
@@ -61,6 +67,7 @@
 <script src="logic.js"></script>
 <script src="domRender.js"></script>
 <script src="canvasRender.js"></script>
+<script src="ui.js"></script>
 <script src="main.js"></script>
 
 </body>

@@ -5,7 +5,8 @@ const blockedKeys = [
     "ArrowLeft",
     "ArrowRight",
     "ArrowUp",
-    "ArrowDown"
+    "ArrowDown",
+    "Space"
 ];
 
 
