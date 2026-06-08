@@ -39,15 +39,20 @@ function gameLoop(timestamp) {
 
     if (game.state.restarting) {
         game.state.score = 0;
+        game.state.combo = 0;
         createBoard(game);
         createPiece(game);
+
+        //Restore pauseButton state
+        game.state.paused = true;
+        clickPauseGame(game);
+
         moveTimer = 0;
         gravityTimer = 0;
         lockDelayTimer = 0;
         lockResetCounter = 0;
         frameTimer = 0;
         game.state.restarting = false;
-        game.state.paused = false;
         game.state.gameIsOver = false;
         game.state.gameOverAlreadyShown = false;
     }
@@ -84,13 +89,18 @@ function gameLoop(timestamp) {
     
     //Check instant presses
     if (game.input.rotate == deltaTime && deltaTime != 0) rotate(game);
-    if (game.input.drop == deltaTime && deltaTime != 0) hardDrop(game);
-
+    if (game.input.drop == deltaTime && deltaTime != 0) {
+        hardDrop(game);
+        gravityTimer = 0;
+        lockDelayTimer = 0;
+        lockResetCounter = 0;
+    }
+    
     if (game.input.left == deltaTime && deltaTime != 0) move(game, -1, 0);
     if (game.input.right == deltaTime && deltaTime != 0) move(game, 1, 0);
     if (game.input.down == deltaTime && deltaTime != 0) move(game, 0, 1);
 
-    maxDirection = Math.max(game.input.left, game.input.right, game.input.down);
+    let maxDirection = Math.max(game.input.left, game.input.right, game.input.down);
 
     if (maxDirection < moveTimer + MOVE_STEP) moveTimer = maxDirection;
     else moveTimer += deltaTime;

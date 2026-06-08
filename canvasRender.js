@@ -176,3 +176,16 @@ function drawCanvasBoard(game) {
         };
     };
 };
+
+function drawGameIsPaused(game) {
+    const ctx = game.state.canvasCtx;
+    const canvas = game.state.canvas;
+    const width = game.state.canvas.width
+    const height = game.state.canvas.height;
+    const cornerFraction = 9.7
+
+    ctx.globalAlpha = 0.5
+    ctx.fillStyle = "black"
+    ctx.fillRect(width / cornerFraction, height / cornerFraction, width * (1 - 2 / cornerFraction), height * (1 - 2/cornerFraction));
+}
+
