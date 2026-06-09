@@ -47,3 +47,7 @@ function updateUiTime(game) {
     timeDisplay.textContent = minutes + ":" + seconds + ":" + centiseconds;
     
 }
+
+function updateUiCombo(game) {
+    game.ui.comboDisplay.textContent = game.state.combo;
+}

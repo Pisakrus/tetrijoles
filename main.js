@@ -144,7 +144,7 @@ function gameLoop(timestamp) {
         lockResetCounter = 0;
     }
 
-    clearRows(game);
+
 
     // Render Everything
     if (frameTimer >= STEP) {
@@ -155,6 +155,7 @@ function gameLoop(timestamp) {
         drawCanvasPiece(game);
 
         updateUiTime(game);
+        updateUiCombo(game);
         frameTimer -= STEP;
     }
 

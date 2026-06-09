@@ -16,6 +16,7 @@ const game = {
     state : {
         board : [],
         score : 0,
+        combo : 0,
         playingTime : 0,
         paused : false,
         restarting : false,

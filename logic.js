@@ -33,12 +33,15 @@ function rowsToClear(game) {
 };      
 
 
-// Delete n full rows and insert n new ones at top.
+// Delete n full rows and insert n new ones at top and update combo and score.
 function clearRows(game) {
     const COLUMNS = game.config.COLUMNS;
     const board = game.state.board;
     const toClear = rowsToClear(game);
     const dryFartSound = game.assets.dryFartSound;
+
+    if (toClear.length) game.state.combo += 1;
+    else game.state.combo = 0;
 
     for (let i of toClear) {
         board.splice(i, 1); // Delete row
@@ -188,6 +191,8 @@ function lockPiece(game) {
     const shapeId = game.activePiece.shapeId;
     const blockMap = game.activePiece.blockMap;
     
+    
+
     for(block of blockMap) {
         let x = ox + block.x;
         let y = oy + block.y
@@ -197,7 +202,9 @@ function lockPiece(game) {
             return;
         }
         game.state.board[y][x] = shapeId + 1;
-    }   
+    }
+
+    clearRows(game);
 }
 
 
