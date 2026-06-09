@@ -43,6 +43,8 @@ function clearRows(game) {
     if (toClear.length) game.state.combo += 1;
     else game.state.combo = 0;
 
+    game.state.score += Math.round(toClear.length ** 1.5) * game.state.combo * 100
+
     for (let i of toClear) {
         board.splice(i, 1); // Delete row
         board.unshift(new Array(COLUMNS).fill(0)); // Create new row at the top
@@ -176,11 +178,11 @@ function canMove(game, dx, dy) {
 
 
 function move(game, dx, dy) {
-    game.activePiece.movedThisFrame = true;
 
     if (canMove(game, dx, dy)) {
         game.activePiece.x += dx;
         game.activePiece.y += dy;
+        game.activePiece.movedThisFrame = true;
     }
 };
 
@@ -299,7 +301,11 @@ function updateGhostPiece(game) {
 }
 
 function hardDrop(game) {
-    game.activePiece.y = getGhostY(game);
+    const ghostY = getGhostY(game);
+
+    game.state.score += 2 * (ghostY - game.activePiece.y)
+    game.activePiece.y = ghostY;
+    
 
     lockPiece(game);
     createPiece(game);

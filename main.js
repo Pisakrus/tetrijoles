@@ -104,7 +104,10 @@ function gameLoop(timestamp) {
 
     if (game.input.left == deltaTime && deltaTime != 0) move(game, -1, 0);
     if (game.input.right == deltaTime && deltaTime != 0) move(game, 1, 0);
-    if (game.input.down == deltaTime && deltaTime != 0) move(game, 0, 1);
+    if (game.input.down == deltaTime && deltaTime != 0 && canMove(game, 0, 1)) {
+        game.state.score += 2;
+        move(game, 0, 1);
+    }
 
     let maxDirection = Math.max(game.input.left, game.input.right, game.input.down);
 
@@ -115,7 +118,10 @@ function gameLoop(timestamp) {
     if (moveTimer >= MOVE_STEP && maxDirection >= MOVE_BUFFER) {
         if (game.input.left) move(game, -1, 0);
         if (game.input.right) move(game, 1, 0);
-        if (game.input.down) move(game, 0, 1);    
+        if (game.input.down && canMove(game, 0, 1)) {
+            game.state.score += 1;
+            move(game, 0, 1);
+        }
         moveTimer -= MOVE_STEP;
     }
 
@@ -154,8 +160,9 @@ function gameLoop(timestamp) {
         drawCanvasGhost(game);
         drawCanvasPiece(game);
 
-        updateUiTime(game);
+        updateUiScore(game);
         updateUiCombo(game);
+        updateUiTime(game);
         frameTimer -= STEP;
     }
 

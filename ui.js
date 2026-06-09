@@ -28,6 +28,16 @@ game.ui.restartButton.onclick = () => {
 
 // Update gui stats
 
+
+function updateUiScore(game) {
+        game.ui.scoreDisplay.textContent = game.state.score;
+}
+
+function updateUiCombo(game) {
+    game.ui.comboDisplay.textContent = game.state.combo;
+}
+
+
 function updateUiTime(game) {
 
     const timeDisplay = game.ui.timeDisplay;
@@ -46,8 +56,4 @@ function updateUiTime(game) {
     
     timeDisplay.textContent = minutes + ":" + seconds + ":" + centiseconds;
     
-}
-
-function updateUiCombo(game) {
-    game.ui.comboDisplay.textContent = game.state.combo;
 }
