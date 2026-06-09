@@ -37,9 +37,12 @@ const STEP = 1000 / FPS;
 function gameLoop(timestamp) {
 
 
+    // No playing states
+
     if (game.state.restarting) {
         game.state.score = 0;
         game.state.combo = 0;
+        game.state.playingTime = 0;
         createBoard(game);
         createPiece(game);
 
@@ -76,9 +79,12 @@ function gameLoop(timestamp) {
         return;
     } 
 
+    // Playing state
+
     if (!LastTime) LastTime = timestamp;
     game.state.deltaTime = timestamp - LastTime;
     let deltaTime = game.state.deltaTime;
+    game.state.playingTime += deltaTime;
 
     game.activePiece.movedThisFrame = false; // move and rotate make this true
     if (game.activePiece.grounded) lockDelayTimer += deltaTime;
@@ -95,7 +101,7 @@ function gameLoop(timestamp) {
         lockDelayTimer = 0;
         lockResetCounter = 0;
     }
-    
+
     if (game.input.left == deltaTime && deltaTime != 0) move(game, -1, 0);
     if (game.input.right == deltaTime && deltaTime != 0) move(game, 1, 0);
     if (game.input.down == deltaTime && deltaTime != 0) move(game, 0, 1);
@@ -148,6 +154,7 @@ function gameLoop(timestamp) {
         drawCanvasGhost(game);
         drawCanvasPiece(game);
 
+        updateUiTime(game);
         frameTimer -= STEP;
     }
 
