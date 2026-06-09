@@ -3,7 +3,7 @@ const game = {
     config : {
         COLUMNS : 10,
         ROWS : 16,
-        CELL_SIZE : 50,
+        CELL_SIZE : 47,
         DIFFICULTY : 1,
         MOVE_BUFFER : 120,
         MOVE_STEP : 85,
@@ -50,12 +50,17 @@ const game = {
     },
 
     ui : {
+        // Buttons
         pauseButton : document.getElementById("pauseButton"),
         pauseLabel : pauseButton.querySelector(".label"),
         pauseIcon : pauseButton.querySelector(".icon"),
 
-        restartButton : document.getElementById("restartButton")
+        restartButton : document.getElementById("restartButton"),
 
+        // Stats
+        timeDisplay : document.getElementById("timeDisplay"),
+        scoreDisplay : document.getElementById("scoreDisplay"),
+        comboDisplay : document.getElementById("comboDisplay")
     },
 
     assets : {

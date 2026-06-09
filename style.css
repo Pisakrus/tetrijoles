@@ -5,7 +5,7 @@ body {
     color: white;
     font-family: 'Press Start 2P';
     font-size: 15px;
-    text-shadow: 1.5px 1.5px darkslateblue;
+    text-shadow: 2px 2px darkslateblue;
 }
 
 button {
@@ -78,7 +78,7 @@ button:active {
     color: goldenrod;
     text-shadow: 
                 0 0 20px rgba(140, 90, 255, 0.75),
-                2px 2px darkblue
+                3px 3px darkblue
 }
 
 /* CENTER PANEL */
@@ -105,10 +105,10 @@ button:active {
 .right-panel {
     display: flex;
     flex-direction: column;
-    justify-content: space-around; 
-    align-items: center;
+    justify-content: space-between; 
+    align-items: start;
 
-    height: 100vh;
+    height: 82vh;
 }
 
 #nextPieceCanvas {
@@ -118,12 +118,14 @@ button:active {
 
 #statsDisplay {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
     gap: 80px;
 }
 
 .hud-item {
-    font-size: 20px;
+    font-size: 24px;
+    text-shadow: 3px 3px darkslateblue;
 }
 
