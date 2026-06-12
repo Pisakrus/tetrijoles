@@ -64,3 +64,22 @@ function updateUiTime(game) {
     timeDisplay.textContent = minutes + ":" + seconds + ":" + centiseconds;
     
 }
+
+function playFartCombo(game) {
+    const dryFartSound = game.assets.dryFartSound;
+    const combo = game.state.combo; 
+
+
+    // const scale = [0, 2, 4, 5, 7, 9, 11, 12]; Major scale
+    const scale = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+    const octave = Math.floor(combo / scale.length)
+    const index = combo % scale.length;
+    const rate =  octave - 0.03 + 2 ** (scale[index] / 12);
+
+    dryFartSound.preservesPitch = false; // Chrome/Safari
+    dryFartSound.mozPreservesPitch = false; // Firefox
+    dryFartSound.webkitPreservesPitch = false; // Older Safari
+
+    dryFartSound.playbackRate = rate;
+    dryFartSound.play().catch(console.error);
+}

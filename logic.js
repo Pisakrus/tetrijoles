@@ -38,19 +38,17 @@ function clearRows(game) {
     const COLUMNS = game.config.COLUMNS;
     const board = game.state.board;
     const toClear = rowsToClear(game);
-    const dryFartSound = game.assets.dryFartSound;
-
-    if (toClear.length) game.state.combo += 1;
-    else game.state.combo = 0;
-
-    game.state.score += Math.round(toClear.length ** 1.5 * 100 * game.state.combo ** 1.5);
 
     for (let i of toClear) {
         board.splice(i, 1); // Delete row
         board.unshift(new Array(COLUMNS).fill(0)); // Create new row at the top
-        
-        dryFartSound.play().catch(console.error);
-    };
+        playFartCombo(game);
+    }; 
+
+    // Handle combo and score
+    if (toClear.length) game.state.combo += 1;
+    else game.state.combo = 0;
+    game.state.score += Math.round(toClear.length ** 1.5 * 100 * game.state.combo ** 1.5);
 };  
 
 
