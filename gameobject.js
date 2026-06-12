@@ -18,6 +18,7 @@ const game = {
         score : 0,
         combo : 0,
         playingTime : 0,
+        deltaTime : 0,
         paused : false,
         restarting : false,
         gameIsOver : false,
@@ -62,6 +63,7 @@ const game = {
         // Stats
         timeDisplay : document.getElementById("timeDisplay"),
         scoreDisplay : document.getElementById("scoreDisplay"),
+        growingScore : 0, // The score that is displayed, not the actual internal score
         comboDisplay : document.getElementById("comboDisplay")
     },
 

@@ -29,9 +29,16 @@ game.ui.restartButton.onclick = () => {
 // Update gui stats
 
 
-function updateUiScore(game) {
-        game.ui.scoreDisplay.textContent = game.state.score;
-}
+    function updateUiScore(game) {
+
+        const scoreDiff = game.state.score - game.ui.growingScore;
+        const scoreRatio = game.state.score / game.ui.growingScore;
+
+        game.ui.growingScore += Math.round(game.state.deltaTime ** scoreRatio);
+        if (game.ui.growingScore >= game.state.score || scoreDiff < 1) game.ui.growingScore = game.state.score; 
+        
+        game.ui.scoreDisplay.textContent = game.ui.growingScore;
+    }
 
 function updateUiCombo(game) {
     game.ui.comboDisplay.textContent = game.state.combo;

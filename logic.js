@@ -43,7 +43,7 @@ function clearRows(game) {
     if (toClear.length) game.state.combo += 1;
     else game.state.combo = 0;
 
-    game.state.score += Math.round(toClear.length ** 1.5) * game.state.combo * 100
+    game.state.score += Math.round(toClear.length ** 1.5 * 100 * game.state.combo ** 1.5);
 
     for (let i of toClear) {
         board.splice(i, 1); // Delete row
@@ -303,7 +303,7 @@ function updateGhostPiece(game) {
 function hardDrop(game) {
     const ghostY = getGhostY(game);
 
-    game.state.score += 2 * (ghostY - game.activePiece.y)
+    game.state.score += Math.round(2.4 * (ghostY - game.activePiece.y));
     game.activePiece.y = ghostY;
     
 

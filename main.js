@@ -10,6 +10,15 @@ async function loadGame() {
 }
 
 
+document.addEventListener("visibilitychange", () => {
+    if (document.hidden) {
+        game.state.paused = true;
+    } else {
+        game.state.paused = false;
+    }
+});
+
+
 //---Game loop---
 
 let LastTime = 0;
