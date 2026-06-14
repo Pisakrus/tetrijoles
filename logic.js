@@ -309,3 +309,11 @@ function hardDrop(game) {
     createPiece(game);
 }
 
+
+function saveHighScore(game) {
+    const highScore = Number(localStorage.getItem("highScore")) || 0;
+
+    if (game.state.score > highScore) {
+    localStorage.setItem("highScore", String(game.state.score));
+    }
+}

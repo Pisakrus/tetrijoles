@@ -2,6 +2,8 @@ async function loadGame() {
 
     await loadBeansTextures(game);
     console.log("assets: ", game.assets)
+
+    if (!localStorage.getItem("highScore")) localStorage.setItem("highScore", "0"); // Create maxScore if it has no value
     createBoard(game);
     createPiece(game);
     createCanvas(game);
@@ -49,11 +51,14 @@ function gameLoop(timestamp) {
     // No playing states
 
     if (game.state.restarting) {
+        createBoard(game);
+        createPiece(game);
+        saveHighScore(game);
+
         game.state.score = 0;
         game.state.combo = 0;
         game.state.playingTime = 0;
-        createBoard(game);
-        createPiece(game);
+
 
         //Restore pauseButton state
         game.state.paused = true;
@@ -79,7 +84,9 @@ function gameLoop(timestamp) {
 
         if (!game.state.gameOverAlreadyShown) {
             game.assets.youLostPayitoSound.play()
-            window.alert("You ate more beans than you could handle... GAME OVER");
+            saveHighScore(game);
+            
+            window.alert(`You ate more beans than you could handle... GAME OVER\n\n Score: ${game.state.score}\n High Score: ${localStorage.getItem("highScore")}`);
             game.state.gameOverAlreadyShown = true;
         }
 
