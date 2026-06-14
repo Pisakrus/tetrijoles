@@ -4,7 +4,7 @@ A web-based Tetris implementation with a lot of beans, built using HTML Canvas.
 
 Gameplay inspired by classic Tetris mechanics, with references to the Tetris Wiki and custom adjustments.
 
-It can be played on the browser [here](https://pisakrus.github.io/tetrijoles/).
+It can be played on the browser <a href="https://pisakrus.github.io/tetrijoles/" target="_blank" rel="noopener noreferrer">here</a>.
 
 <img width="600" height="400" src="images/tetrijoles-screenshot.png"/>
 
