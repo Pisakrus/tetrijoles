@@ -26,9 +26,10 @@ button {
 }
 button:hover {
     filter: brightness(1.15);
-    cursor: pointer;
     box-shadow: 0 0 10px darkslateblue;
     text-shadow: 1px 1px pink;
+
+    cursor: pointer;
 }
 button:active {
     filter: brightness(1.4);
@@ -112,7 +113,8 @@ button:active {
 }
 
 #nextPieceCanvas {
-    border: 10px solid #2b1b50;
+    border: 5px solid #2b1b50;
+    border-radius: 60px;
 
 }
 
