@@ -181,6 +181,8 @@ function move(game, dx, dy) {
         game.activePiece.x += dx;
         game.activePiece.y += dy;
         game.activePiece.movedThisFrame = true;
+
+        playMovementSound(game);
     }
 };
 
@@ -190,6 +192,7 @@ function lockPiece(game) {
     const oy = game.activePiece.y;
     const shapeId = game.activePiece.shapeId;
     const blockMap = game.activePiece.blockMap;
+    playLockSound(game);
     
     
 

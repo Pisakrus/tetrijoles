@@ -78,7 +78,9 @@ const game = {
                         "images/pinto-beans.jpg"],
                         
         BEANS : [],
-        dryFartSound : new Audio("sounds/dry-fart.mp3"),
+        dropletSound : "sounds/water-droplet-drip.mp3",
+        dryFartSound :"sounds/dry-fart.mp3",
+        girlFartSound : "sounds/girl-fart.mp3",
         youLostPayitoSound : new Audio("sounds/you-lost-payito.mp3")
     }
 

@@ -65,8 +65,11 @@ function updateUiTime(game) {
     
 }
 
+
+// Sounds
+
 function playFartCombo(game) {
-    const dryFartSound = game.assets.dryFartSound;
+    const dryFartSound = new Audio(game.assets.dryFartSound);
     const combo = game.state.combo; 
 
 
@@ -80,6 +83,27 @@ function playFartCombo(game) {
     dryFartSound.mozPreservesPitch = false; // Firefox
     dryFartSound.webkitPreservesPitch = false; // Older Safari
 
+    dryFartSound.volume = 0.8
     dryFartSound.playbackRate = rate;
+
     dryFartSound.play().catch(console.error);
+}
+
+function playLockSound(game) {
+    const lockSound = new Audio(game.assets.girlFartSound);
+
+    lockSound.volume = 0.5;
+    lockSound.playbackRate = 2;
+
+    lockSound.play();
+}
+
+
+function playMovementSound(game) {
+    const movementSound = new Audio(game.assets.dropletSound);
+
+    movementSound.volume = 0.65;
+    movementSound.playbackRate = 9;
+
+    movementSound.play();
 }

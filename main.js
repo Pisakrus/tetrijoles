@@ -146,6 +146,7 @@ function gameLoop(timestamp) {
     if (canMove(game, 0, 1)) game.activePiece.grounded = false;
     else game.activePiece.grounded = true;
 
+    // Gravity
     if (gravityTimer >= GRAVITY_STEP) {
         if (!game.activePiece.grounded) game.activePiece.y += 1;
         gravityTimer -= GRAVITY_STEP;
